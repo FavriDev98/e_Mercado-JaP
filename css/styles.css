@@ -188,3 +188,13 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+/* Aca comienza el login */
+
+#bodylogin {
+  background-color: #fff;
+}
+
+.form-floating {
+  text-align: center;
+}
