@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.formulario {
+    width: 20vw;
+    height: 40vh;
+    margin: auto;
+    margin-top: 4rem;
+    background: linear-gradient(15deg, rgb(252, 143, 1) 100%, rgb(124, 71, 1) 100%);
+    align-content: center;
+    border-radius: 20px;
+    box-shadow:  12px 12px 2px 1px rgba(0, 0, 0, 0.2); 
+}
+
+#usuario {
+    border-radius: 5px;
+    height: 2.5rem;
+    margin-top: 1rem;
+    border: 0;
+}
+
+#usuario-box {
+    text-align: center;
+    opacity: 100%;
+    padding: 1rem;
+}
+
+#password-box {
+    text-align: center;
+    opacity: 100%;
+    padding: 1rem;
+}
+
+#password {
+    border-radius: 5px;
+    height: 2.5rem;
+    border: 0;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+}
+
+#login-text {
+    padding-top: 2.5rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    font-size: 40px;
+}
+
+.recordar {
+    color: #fff;
+}
+
+.recordar-box {
+    text-align: center;
+    padding-top: .8rem;
+}
+
+.img-login {
+    height: 20vh;
+}
+
+.img-login-box {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+    top: 0;
+}
