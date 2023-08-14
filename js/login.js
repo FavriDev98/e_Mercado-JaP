@@ -1,4 +1,6 @@
 /* boton */
+localStorage.removeItem('usuario');
+localStorage.removeItem('password');
 
 document.addEventListener('DOMContentLoaded', function() {
     let boton = document.getElementById('lginbttn');
@@ -7,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let user = document.getElementById('usuario').value;
         let password = document.getElementById('password').value;
-        localStorage.removeItem('usuario');
-        localStorage.removeItem('password');
 
         if (user.length < 5 || password.length < 5) {
             document.getElementById('alert').classList.remove('hide');
