@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function(){
+    if ((localStorage.getItem('usuario') != "" && localStorage.getItem('password') != "")) {
+        window.location.href = './login.html';
+    }    
+})
+
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";

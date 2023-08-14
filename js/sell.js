@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function(){
+    if ((localStorage.getItem('usuario') != "" && localStorage.getItem('password') != "")) {
+        window.location.href = './login.html';
+    }    
+})
+
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;

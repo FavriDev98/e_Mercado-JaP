@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function(){
+  if ((localStorage.getItem('usuario') != "" && localStorage.getItem('password') != "")) {
+      window.location.href = './login.html';
+  }    
+})
+
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";
