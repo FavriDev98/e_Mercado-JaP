@@ -15,6 +15,7 @@ body {
     align-content: center;
     border-radius: 20px;
     box-shadow:  12px 12px 2px 1px rgba(0, 0, 0, 0.2); 
+    margin-bottom: 20px;
 }
 
 #usuario {
@@ -79,4 +80,30 @@ footer {
     width: 100%;
     background-color: #fff;
     top: 0;
+}
+
+#lginbttn {
+    text-align: center;
+    background-color: rgb(252, 143, 1);
+    width: 10vh;
+    height: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    border: 2px solid rgb(202, 115, 2);
+}
+
+.txt-btn {
+    padding: 5%;
+    font-size: 1.2rem;
+    font-weight:bolder;
+    color: #fff;
+    border-radius: 20px;
+    transition: .5s;
+}
+
+#lginbttn :hover {
+    color: rgb(97, 59, 1);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }

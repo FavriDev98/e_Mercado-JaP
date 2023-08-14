@@ -1,5 +1,21 @@
-let user = document.getElementById('user').value;
-let email = document.getElementById('email').value;
+let user = document.getElementById('usuario').value;
+let password = document.getElementById('password').value;
+
+/* boton */
+
+document.addEventListener('DOMContentLoaded', function() {
+    let boton = document.getElementById('lginbttn');
+
+    boton.addEventListener("click", function(){
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('password');
+
+        if (document.getElementById('check-recordar').checked) {
+            localStorage.setItem('usuario', user);
+            localStorage.setItem('password', password);
+        }
+    });
+});
 
 function validation() {
     if (name != '' && email != '') {
@@ -21,3 +37,4 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 })
+
