@@ -5,11 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     boton.addEventListener("click", function(){
         
-    let user = document.getElementById('usuario').value;
+        let user = document.getElementById('usuario').value;
         let password = document.getElementById('password').value;
         localStorage.removeItem('usuario');
         localStorage.removeItem('password');
 
+        if (user.length < 5 || password.length < 5) {
+            document.getElementById('alert').classList.remove('hide');
+        }
         if (document.getElementById('check-recordar').checked) {
             localStorage.setItem('usuario', user);
             localStorage.setItem('password', password);
@@ -17,24 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function validation() {
-    if (name != '' && email != '') {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function(){ 
-
-    const registrarme = document.getElementById("regBtn");
-
-    registrarme.addEventListener("click", function(){
-        if (validation()){
-            showAlertSuccess();
-        } else {
-            showAlertError();
-        }
-    });
+document.addEventListener('DOMContentLoaded', function(){
+    let xBtn = document.getElementById('x-btn');
+    xBtn.addEventListener("click", function() {
+        document.getElementById('alert').classList.add('hide');
+    })
 })
 

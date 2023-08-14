@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
+    if ((localStorage.getItem('usuario') != "" && localStorage.getItem('password') != "")) {
+        window.location.href = './login.html';
+    }    
+})
+
+
+document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"

@@ -1,0 +1,35 @@
+#alert {
+    position: fixed;
+    top: 125px;
+    height: 10%;
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(255, 17, 0, 0.7);
+    text-align: center;
+    font-size: 2.5rem;
+    border-radius: 20px;
+  }
+
+.txt-alert {
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1.2rem;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+
+#x-btn {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    transition: 0.2s;
+}
+
+.xBtn:hover {
+    cursor: pointer;
+    rotate: 90deg;
+}
