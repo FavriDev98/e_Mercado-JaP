@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
-  if ((localStorage.getItem('usuario') = null && (localStorage.getItem('password') = null))) {
-      window.location.href = './login.html';
-  }    
+  if ((sessionStorage.getItem('usuario') != null || (sessionStorage.getItem('password') != null))) {
+      return;
+  } else { if ((localStorage.getItem('usuario') != null || (localStorage.getItem('password') != null))){
+      return;
+      }
+  }
+  window.location.href = './login.html';
 })
 
 "use strict";
