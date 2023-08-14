@@ -7,17 +7,13 @@ body {
 }
 
 .formulario {
-    width: 20vw;
-    height: 40vh;
-    /* width: 240px;
-    height: 320px; */
-    margin: auto;
-    margin-top: 4rem;
+    width: 340px;
+    height: 420px;
+    margin: 0 auto;
     background: linear-gradient(15deg, rgb(252, 143, 1) 100%, rgb(125, 75, 1) 100%);
     align-content: center;
     border-radius: 50px;
     box-shadow:  12px 12px 10px 1px rgba(0, 0, 0, 0.2); 
-    margin-bottom: 20px;
 }
 
 
@@ -35,13 +31,12 @@ body {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+margin-top: 20px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     text-align: center;
     background-color: #fff;
 }
-
 #login-text {
     padding-top: 2.5rem;
     text-align: center;
@@ -57,7 +52,8 @@ footer {
 
 .recordar-box {
     text-align: center;
-    padding-top: .8rem;
+    padding-top: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .img-login {
@@ -74,26 +70,29 @@ footer {
 }
 
 #lginbttn {
-    text-align: center;
-    background-color: rgb(252, 143, 1);
-    width: 15vh;
-    height: 5vh;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    background-color: rgb(255, 255, 255);
+    width: 150px;
+    height: 50px;
+    margin: 30px auto;
     border-radius: 50px;
     border: 2px solid rgb(202, 115, 2);
+    padding: 20px;
 }
 
 .txt-btn {
-    padding: 5%;
     font-size: 1.2rem;
-    font-weight:bolder;
+    font-weight: bolder;
     color: #000000;
     border-radius: 50px;
     transition: .5s;
+    margin-top: 20px;
 }
 
-#lginbttn :hover {
+
+#lginbttn:hover {
     color: rgb(97, 59, 1);
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
