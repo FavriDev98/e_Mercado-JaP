@@ -52,7 +52,7 @@ footer {
 }
 
 .recordar {
-    color: #fff;
+    color: #000000;
 }
 
 .recordar-box {
@@ -88,7 +88,7 @@ footer {
     padding: 5%;
     font-size: 1.2rem;
     font-weight:bolder;
-    color: #fff;
+    color: #000000;
     border-radius: 50px;
     transition: .5s;
 }
