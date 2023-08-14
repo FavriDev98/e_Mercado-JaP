@@ -1,12 +1,12 @@
-let user = document.getElementById('usuario').value;
-let password = document.getElementById('password').value;
-
 /* boton */
 
 document.addEventListener('DOMContentLoaded', function() {
     let boton = document.getElementById('lginbttn');
 
     boton.addEventListener("click", function(){
+        
+    let user = document.getElementById('usuario').value;
+        let password = document.getElementById('password').value;
         localStorage.removeItem('usuario');
         localStorage.removeItem('password');
 
