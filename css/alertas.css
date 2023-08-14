@@ -31,5 +31,5 @@
 
 .xBtn:hover {
     cursor: pointer;
-    rotate: 90deg;
+    scale: 120%;
 }

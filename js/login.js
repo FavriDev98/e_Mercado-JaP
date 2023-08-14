@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (user.length < 5 || password.length < 5) {
             document.getElementById('alert').classList.remove('hide');
-        }
-        if (document.getElementById('check-recordar').checked) {
-            localStorage.setItem('usuario', user);
-            localStorage.setItem('password', password);
+        } else {
+            if (document.getElementById('check-recordar').checked) {
+                localStorage.setItem('usuario', user);
+                localStorage.setItem('password', password);
+            }
+            window.location.href = './index.html';
         }
     });
 });
