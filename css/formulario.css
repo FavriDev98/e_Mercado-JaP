@@ -102,14 +102,16 @@ footer {
 /* boton inicio */
 
 #lginbttn {
-    text-align: center;
-    width: 10vh;
-    height: 5vh;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 20px;
-}
-
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    background-color: rgb(255, 255, 255);
+    width: 150px;
+    height: 50px;
+    margin: 30px auto;
+    border-radius: 50px;
+    border: 2px solid rgb(202, 115, 2);
+    padding: 20px;}
 .txt-btn {
     background-color: rgb(252, 143, 1);
     padding: 10%;
