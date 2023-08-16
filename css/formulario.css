@@ -1,39 +1,45 @@
 * {
     margin: 0;
 }
-
 body {
-    background-color: #ffffff;
+    background-color: #fff;
 }
-
 .formulario {
-    width: 340px;
-    height: 420px;
-    margin: 0 auto;
+    width: 18vw;
+    height: 40vh;
+    margin: auto;
+    margin-top: 2rem;
     background: linear-gradient(15deg, rgb(252, 143, 1) 100%, rgb(125, 75, 1) 100%);
     align-content: center;
     border-radius: 50px;
-    box-shadow:  12px 12px 10px 1px rgba(0, 0, 0, 0.2); 
+    box-shadow:  12px 12px 5px rgba(0, 0, 0, 0.2); 
+    margin-bottom: 20px;
 }
-
-
-.input-div {
+#usuario {
+    border-radius: 50px;
+    height: 2.5rem;
+    margin-top: 1rem;
+    border: 0;
+}
+#usuario-box {
     text-align: center;
     opacity: 100%;
     padding: 1rem;
 }
-
-.input-box {
+#password-box {
+    text-align: center;
+    opacity: 100%;
+    padding: 1rem;
+}
+#password {
     border-radius: 50px;
     height: 2.5rem;
     border: 0;
-    padding-left: 5%;
 }
-
 footer {
-margin-top: 20px;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     background-color: #fff;
 }
@@ -42,36 +48,33 @@ margin-top: 20px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
-    color: #000000;
-    font-size: 40px;
+    color: #fff;
+    font-size: 45px;
 }
-
+/* checkbox */
 .recordar {
     color: #fff;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: ease-in-out 0.3s;
 }
 
 .recordar-box {
     text-align: center;
-    padding-top: 1.2rem;
-    font-size: 1.2rem;
+    padding-top: .8rem;
 }
-
 .recordar:hover {
     color: rgb(97, 59, 1);
     cursor: pointer;
 }
-
 #check-recordar {
     margin-right: 6px;
     pointer-events: none;
 }
-
 /* imagen inicio */
-
 .img-login {
     height: 20vh;
 }
-
 .img-login-box {
     display: flex;
     align-content: center;
@@ -80,37 +83,26 @@ margin-top: 20px;
     background-color: #fff;
     top: 0;
 }
-
 /* boton inicio */
-
 #lginbttn {
-    
-    background-color: white;
     text-align: center;
-    width: 18vh;
+    width: 10vh;
     height: 5vh;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
-
 .txt-btn {
+    background-color: rgb(252, 143, 1);
     padding: 10%;
     font-size: 1.2rem;
-    font-weight: bolder;
-    color: #000000;
-    border-radius: 50px;
+    font-weight:bolder;
+    color: #fff;
+    border-radius: 20px;
     transition: ease-in-out .3s;
-    margin-top: 20px;
 }
 
-
-
-#lginbttn:hover {
+#lginbttn :hover {
     color: rgb(97, 59, 1);
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
