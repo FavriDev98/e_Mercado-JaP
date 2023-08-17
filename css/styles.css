@@ -188,10 +188,3 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-
-.data-item {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  background-color: #f5f5f5;
-}

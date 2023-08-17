@@ -22,8 +22,10 @@ fetch(url)
             
             div.innerHTML = `
                 <img src="${item.image}">
-                <h2>${item.name}</h2>
+                <h2 class="product-title" >${item.name}</h2>
+                <div class="description-container" >
                 <p>${item.description}</p>
+                </div>
             `;
 
             dataContainer.appendChild(div);
