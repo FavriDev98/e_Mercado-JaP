@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", function(){
+    if ((sessionStorage.getItem('usuario') != null || (sessionStorage.getItem('password') != null))) {
+        return;
+    } else { if ((localStorage.getItem('usuario') != null || (localStorage.getItem('password') != null))){
+        return;
+        }
+    }
+    window.location.href = './login.html';
+})
+
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";

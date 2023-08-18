@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", function(){
+  if ((sessionStorage.getItem('usuario') != null || (sessionStorage.getItem('password') != null))) {
+      return;
+  } else { if ((localStorage.getItem('usuario') != null || (localStorage.getItem('password') != null))){
+      return;
+      }
+  }
+  window.location.href = './login.html';
+})
+
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";

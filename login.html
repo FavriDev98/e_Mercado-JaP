@@ -10,6 +10,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/formulario.css">
+  <link rel="stylesheet" href="/css/alertas.css">
 </head>
 
 <body>
@@ -17,26 +18,32 @@
     <img class="img-login" src="/img/login.png">
   </div>
   <div class="formulario">
-    <p id="login-text">Log In</p>
-    <div id="usuario-box">
-      <input id="usuario" type="email" placeholder="  Usuario" required>
+    <p id="login-text">Iniciar Sesion</p>
+    <div class="input-div" id="usuario-box">
+      <input class="input-box" id="usuario" type="email" placeholder="  Usuario" required>
     </div>
-    <div id="password-box">
-      <input id="password" type="password" placeholder="  Contraseña" required>
+    <div class="input-div" id="password-box">
+      <input class="input-box" id="password" type="password" placeholder="  Contraseña" required>
     </div>
     <div class="recordar-box">
-      <input id="check-recordar" type="checkbox" value="Remember me">
-      <label class="recordar">Recuerdame</label>
+      
+      <label class="recordar" ><input id="check-recordar" type="checkbox">Recuerdame</label>
     </div>
   </div>
   <div id="lginbttn">
     <p class="txt-btn">Ingresar</p>
   </div>
+  
+
+  <div class="hide" id="alert">
+    <p class="txt-alert">Usuario y Contraseña no coinciden</p>
+    <p class="xBtn" id="x-btn">&times;</p>
+  </div>
     
 </body>
 <footer>
   <div>
-    <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    <p >Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
   </div>
   <script src="js/login.js"></script>
 </footer>

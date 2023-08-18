@@ -1,48 +1,41 @@
 * {
     margin: 0;
 }
-
 body {
-    background-color: #f5f5f5;
+    background-color: #fff;
 }
-
 .formulario {
-    width: 20vw;
+    width: 18vw;
     height: 40vh;
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 2rem;
     background: linear-gradient(15deg, rgb(252, 143, 1) 100%, rgb(125, 75, 1) 100%);
     align-content: center;
-    border-radius: 20px;
-    box-shadow:  12px 12px 2px 1px rgba(0, 0, 0, 0.2); 
+    border-radius: 50px;
+    box-shadow:  12px 12px 5px rgba(0, 0, 0, 0.2); 
     margin-bottom: 20px;
 }
-
 #usuario {
-    border-radius: 5px;
+    border-radius: 50px;
     height: 2.5rem;
     margin-top: 1rem;
     border: 0;
 }
-
 #usuario-box {
     text-align: center;
     opacity: 100%;
     padding: 1rem;
 }
-
 #password-box {
     text-align: center;
     opacity: 100%;
     padding: 1rem;
 }
-
 #password {
-    border-radius: 5px;
+    border-radius: 50px;
     height: 2.5rem;
     border: 0;
 }
-
 footer {
     position: fixed;
     bottom: 0;
@@ -50,29 +43,38 @@ footer {
     text-align: center;
     background-color: #fff;
 }
-
 #login-text {
     padding-top: 2.5rem;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
     color: #fff;
-    font-size: 40px;
+    font-size: 45px;
 }
-
+/* checkbox */
 .recordar {
     color: #fff;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: ease-in-out 0.3s;
 }
 
 .recordar-box {
     text-align: center;
     padding-top: .8rem;
 }
-
+.recordar:hover {
+    color: rgb(97, 59, 1);
+    cursor: pointer;
+}
+#check-recordar {
+    margin-right: 6px;
+    pointer-events: none;
+}
+/* imagen inicio */
 .img-login {
     height: 20vh;
 }
-
 .img-login-box {
     display: flex;
     align-content: center;
@@ -81,29 +83,27 @@ footer {
     background-color: #fff;
     top: 0;
 }
-
+/* boton inicio */
 #lginbttn {
     text-align: center;
-    background-color: rgb(252, 143, 1);
     width: 10vh;
     height: 5vh;
     margin-left: auto;
     margin-right: auto;
     border-radius: 20px;
-    border: 2px solid rgb(202, 115, 2);
 }
-
 .txt-btn {
-    padding: 5%;
+    background-color: rgb(252, 143, 1);
+    padding: 10%;
     font-size: 1.2rem;
     font-weight:bolder;
     color: #fff;
     border-radius: 20px;
-    transition: .5s;
+    transition: ease-in-out .3s;
 }
 
 #lginbttn :hover {
     color: rgb(97, 59, 1);
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
