@@ -90,11 +90,103 @@ filtBtn.addEventListener('click', () => {
     }
 });
 
+/* orden precio */
+/*asc*/
+let BtnSortAsc = document.getElementById('sortAsc');
+
+BtnSortAsc.addEventListener('click', function() {
+    document.getElementById('data-container').innerHTML=``;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let arrayProducts = data.products;
+            arrayProducts.sort(function(a,b) {
+                return a.cost - b.cost;
+            })
+            arrayProducts.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('data-item'); 
+                
+                div.innerHTML = `
+                    <img src="${item.image}">
+                    <h2 class="product-title" >${item.name} <p>${item.cost} ${item.currency}</p></h2>
+                    <div class="description-container" >
+                    <p>${item.description}</p>
+                    </div>
+                `;
+
+                document.getElementById('data-container').appendChild(div);
+            });
+        })
+})
+
+/*desc*/
+let BtnSortDesc = document.getElementById('sortDesc');
+
+BtnSortDesc.addEventListener('click', function() {
+    document.getElementById('data-container').innerHTML=``;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let arrayProducts = data.products;
+            arrayProducts.sort(function(a,b) {
+                return b.cost - a.cost;
+            })
+            arrayProducts.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('data-item'); 
+                
+                div.innerHTML = `
+                    <img src="${item.image}">
+                    <h2 class="product-title" >${item.name} <p>${item.cost} ${item.currency}</p></h2>
+                    <div class="description-container" >
+                    <p>${item.description}</p>
+                    </div>
+                `;
+
+                document.getElementById('data-container').appendChild(div);
+            });
+        })
+})
+
+/* rel */
+
+let BtnSortCount = document.getElementById('sortByCount');
+
+BtnSortCount.addEventListener('click', function() {
+    document.getElementById('data-container').innerHTML=``;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let arrayProducts = data.products;
+            arrayProducts.sort(function(a,b) {
+                return b.soldCount - a.soldCount;
+            })
+            arrayProducts.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('data-item'); 
+                
+                div.innerHTML = `
+                    <img src="${item.image}">
+                    <h2 class="product-title" >${item.name} <p>${item.cost} ${item.currency}</p></h2>
+                    <div class="description-container" >
+                    <p>${item.description}</p>
+                    </div>
+                `;
+
+                document.getElementById('data-container').appendChild(div);
+            });
+        })
+})
+
+
+/* limpiar filtro */
+
 const clear = document.getElementById('clearRangeFilter');
 
 clear.addEventListener('click', function() {
     for (article of articleList) {
-        article.style.display= 'grid';
+        article.style.display= 'initial';
     }
     costMax.value = "";
     costMin.value = "";
