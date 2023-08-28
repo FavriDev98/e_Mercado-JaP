@@ -15,8 +15,12 @@ const url = 'https://japceibal.github.io/emercado-api/cats_products/' + cat_loca
 fetch(url)
     .then(response => response.json())
     .then(data => {
-        const arrayProducts = data.products;
+        let arrayProducts = data.products;
         const dataContainer = document.getElementById('data-container');
+
+        arrayProducts.sort(function(a,b) {
+            return a.id - b.id;
+        })
         
         arrayProducts.forEach(item => {
             const div = document.createElement('div');
@@ -185,9 +189,29 @@ BtnSortCount.addEventListener('click', function() {
 const clear = document.getElementById('clearRangeFilter');
 
 clear.addEventListener('click', function() {
-    for (article of articleList) {
-        article.style.display= 'initial';
-    }
+    document.getElementById('data-container').innerHTML=``;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let arrayProducts = data.products;
+            arrayProducts.sort(function(a,b) {
+                return a.id - b.id;
+            })
+            arrayProducts.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('data-item'); 
+                
+                div.innerHTML = `
+                    <img src="${item.image}">
+                    <h2 class="product-title" >${item.name} <p>${item.cost} ${item.currency}</p></h2>
+                    <div class="description-container" >
+                    <p>${item.description}</p>
+                    </div>
+                `;
+
+                document.getElementById('data-container').appendChild(div);
+            });
+        })
     costMax.value = "";
     costMin.value = "";
 })
