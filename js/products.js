@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function(){
     window.location.href = './login.html';
 })
 
-const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+let cat_localS = localStorage.getItem('catID');
+
+const url = 'https://japceibal.github.io/emercado-api/cats_products/' + cat_localS + '.json';
 
 fetch(url)
     .then(response => response.json())
@@ -22,7 +24,7 @@ fetch(url)
             
             div.innerHTML = `
                 <img src="${item.image}">
-                <h2 class="product-title" >${item.name}</h2>
+                <h2 class="product-title" >${item.name} - ${item.cost} ${item.currency}</h2>
                 <div class="description-container" >
                 <p>${item.description}</p>
                 </div>

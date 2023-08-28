@@ -188,3 +188,20 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+/* nombre usuario en nav-bar */
+
+#user-name {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+}
+
+/* filtros */
+.container-sort {
+  margin-top: 20px;
+}
+
+.form-control::placeholder {
+  color: rgb(182, 182, 182);
+}

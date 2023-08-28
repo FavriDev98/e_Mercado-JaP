@@ -23,3 +23,10 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 });
 
+document.addEventListener("DOMContentLoaded", function(){
+    let userShow = document.getElementById('user-name');
+    let userData = localStorage.getItem('usuario');
+    userShow.innerHTML = `
+            <p>${userData}<p>
+    `
+})
