@@ -26,7 +26,14 @@ document.addEventListener("DOMContentLoaded", function(){
 document.addEventListener("DOMContentLoaded", function(){
     let userShow = document.getElementById('user-name');
     let userData = localStorage.getItem('usuario');
-    userShow.innerHTML = `
+    let userSession = sessionStorage.getItem('usuario');
+    if (userData != null) {
+        userShow.innerHTML = `
             <p>${userData}<p>
     `
+    } else {
+        userShow.innerHTML = `
+            <p>${userSession}<p>
+    `    
+    }
 })
