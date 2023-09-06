@@ -207,9 +207,12 @@ a.custom-card:hover {
 }
 
 /* Seccion de Comentarios */
-.normal{
+.normal_font{
   font-weight: normal;
 }
+.margin_5{
+  margin-bottom: 5px}
+
 
 .form_camp_border{
   border-radius: 5px;
@@ -220,7 +223,12 @@ a.custom-card:hover {
   height: 30px;
 }
 .boton_formulario{
-  background-color: blue;
+  background-color: rgba(25, 97, 253, 0.747);
   color:white;
   border: none;
+  height: 30px;
+  width: 60px; 
+}
+.boton_formulario:hover{
+  background-color:rgba(0, 17, 255, 0.747);
 }
