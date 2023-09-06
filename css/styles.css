@@ -206,10 +206,25 @@ a.custom-card:hover {
   color: rgb(182, 182, 182);
 }
 
-/* boton ver detalles */
-.info-button {
-  height: 40px;
-  width: 45px;;
-  color: red;
-  background-color: red;
+/* estilos comentarios */
+
+#comentarios {
+  background: rebeccapurple;
+  padding: 2rem;
+  margin: 5rem;
 }
+
+
+.data-com {
+  
+}
+
+.coment-container {
+  
+}
+
+.coment {
+  display: flex;
+}
+
+
