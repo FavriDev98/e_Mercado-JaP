@@ -194,7 +194,7 @@ a.custom-card:hover {
 #user-name {
   color: #fff;
   position: absolute;
-  top: 10px;
+  top: 11px;
 }
 
 /* filtros */
@@ -204,4 +204,12 @@ a.custom-card:hover {
 
 .form-control::placeholder {
   color: rgb(182, 182, 182);
+}
+
+/* boton ver detalles */
+.info-button {
+  height: 40px;
+  width: 45px;;
+  color: red;
+  background-color: red;
 }
