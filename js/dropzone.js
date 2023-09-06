@@ -8,6 +8,21 @@ document.addEventListener("DOMContentLoaded", function(){
   window.location.href = './login.html';
 })
 
+document.addEventListener("DOMContentLoaded", function(){
+  let userShow = document.getElementById('user-name');
+  let userData = localStorage.getItem('usuario');
+  let userSession = sessionStorage.getItem('usuario');
+  if (userData != null) {
+      userShow.innerHTML = `
+          <p>${userData}<p>
+  `
+  } else {
+      userShow.innerHTML = `
+          <p>${userSession}<p>
+  `    
+  }
+})
+
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();

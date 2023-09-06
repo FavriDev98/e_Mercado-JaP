@@ -8,6 +8,21 @@ document.addEventListener("DOMContentLoaded", function(){
   window.location.href = './login.html';
 })
 
+document.addEventListener("DOMContentLoaded", function(){
+  let userShow = document.getElementById('user-name');
+  let userData = localStorage.getItem('usuario');
+  let userSession = sessionStorage.getItem('usuario');
+  if (userData != null) {
+      userShow.innerHTML = `
+          <p>${userData}<p>
+  `
+  } else {
+      userShow.innerHTML = `
+          <p>${userSession}<p>
+  `    
+  }
+})
+
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";

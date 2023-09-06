@@ -8,6 +8,21 @@ document.addEventListener("DOMContentLoaded", function(){
     window.location.href = './login.html';
 })
 
+document.addEventListener("DOMContentLoaded", function(){
+    let userShow = document.getElementById('user-name');
+    let userData = localStorage.getItem('usuario');
+    let userSession = sessionStorage.getItem('usuario');
+    if (userData != null) {
+        userShow.innerHTML = `
+            <p>${userData}<p>
+    `
+    } else {
+        userShow.innerHTML = `
+            <p>${userSession}<p>
+    `    
+    }
+})
+
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";

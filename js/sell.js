@@ -8,6 +8,21 @@ document.addEventListener("DOMContentLoaded", function(){
     window.location.href = './login.html';
 })
 
+document.addEventListener("DOMContentLoaded", function(){
+    let userShow = document.getElementById('user-name');
+    let userData = localStorage.getItem('usuario');
+    let userSession = sessionStorage.getItem('usuario');
+    if (userData != null) {
+        userShow.innerHTML = `
+            <p>${userData}<p>
+    `
+    } else {
+        userShow.innerHTML = `
+            <p>${userSession}<p>
+    `    
+    }
+})
+
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;
