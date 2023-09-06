@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
 let cat_localS = localStorage.getItem('catID');
 
+function setItemID(id) {
+    localStorage.setItem("itemID", id);
+    window.location = "product-info.html"
+}
+
 const url = 'https://japceibal.github.io/emercado-api/cats_products/' + cat_localS + '.json';
 
 fetch(url)
@@ -24,7 +29,8 @@ fetch(url)
         
         arrayProducts.forEach(item => {
             const div = document.createElement('div');
-            div.classList.add('data-item'); 
+            div.classList.add('data-item');
+            let id = item.id; 
             
             div.innerHTML = `
                 <img src="${item.image}">
@@ -33,6 +39,10 @@ fetch(url)
                 <p>${item.description}</p>
                 </div>
             `;
+            
+            div.addEventListener('click', function() {
+                setItemID(id);
+            });
 
             dataContainer.appendChild(div);
         });

@@ -7,3 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     window.location.href = './login.html';
 })
+
+let item_localS = localStorage.getItem('itemID');
+
+console.log(item_localS)
