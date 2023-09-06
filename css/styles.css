@@ -206,7 +206,7 @@ a.custom-card:hover {
   color: rgb(182, 182, 182);
 }
 
-<<<<<<< HEAD
+
 /* Seccion de Comentarios */
 .normal_font {
   font-weight: normal;
@@ -246,28 +246,3 @@ width: 150%;
 #Formulario {
   margin: 1% 40%;
 }
-=======
-/* estilos comentarios */
-
-#comentarios {
-  background: rebeccapurple;
-  padding: 2rem;
-  margin: 5rem;
-}
-
-
-.data-com {
-  
-}
-
-.coment-container {
-  
-  
-}
-
-.coment {
-  display: flex;
-}
-
-
->>>>>>> emi-punto-3
