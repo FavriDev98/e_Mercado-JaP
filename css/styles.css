@@ -206,10 +206,42 @@ a.custom-card:hover {
   color: rgb(182, 182, 182);
 }
 
-/* boton ver detalles */
-.info-button {
-  height: 40px;
-  width: 45px;;
-  color: red;
-  background-color: red;
+/* Seccion de Comentarios */
+.normal_font {
+  font-weight: normal;
+}
+
+.margin_5 {
+  margin-bottom: 5px
+}
+
+#comentario{
+max-height: 70px;
+width: 150%;
+}
+.form_camp_border {
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.select {
+  width: 150px;
+  height: 30px;
+}
+
+.boton_formulario {
+  background-color: rgba(25, 97, 253, 0.747);
+  color: white;
+  border: none;
+  height: 30px;
+  width: 60px;
+}
+
+.boton_formulario:hover {
+  background-color: rgba(0, 17, 255, 0.747);
+}
+
+/* Solo pa que no se pegue en la pared en lo oscuro */
+#Formulario {
+  margin: 1% 40%;
 }
