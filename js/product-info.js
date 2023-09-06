@@ -11,9 +11,38 @@ document.addEventListener("DOMContentLoaded", function(){
 
 let item_localS = localStorage.getItem('itemID');
 
-const url = 'https://japceibal.github.io/emercado-api/products_comments/' + item_localS + '.json'
+const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
 
-fetch(url)
+fetch(urlProduct)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        let product = data;
+        const dataContainer = document.getElementById('informacion-shw')
+
+            const div = document.createElement('div');
+            div.classList.add('info-co')
+
+            div.innerHTML = `
+                <h1>${product.name}</h1>
+                <hr>
+                <h2 class="product-title" > </h2>
+                <p>${product.currency} ${product.cost}</p>
+                <div class="description-container" >
+                <p>${product.description}</p>
+                <div class='showimg';>
+                <img src="${product.images}">
+                </div>
+                </div> `
+            ;
+
+            dataContainer.appendChild(div);
+
+});
+
+const urlComment = 'https://japceibal.github.io/emercado-api/products_comments/' + item_localS + '.json'
+
+fetch(urlComment)
 .then(response => response.json())
 .then(data => {
     console.log(data)
