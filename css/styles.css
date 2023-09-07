@@ -235,6 +235,10 @@ width: 100%;
   padding: 5px;
 }
 
+.cont-stars:hover {
+  cursor: pointer;
+}
+
 .boton_formulario {
   background-color: rgb(252, 143, 1);
   color: white;
