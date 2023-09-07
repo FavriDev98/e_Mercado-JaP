@@ -84,9 +84,8 @@ fetch(urlComment)
                         starCom.innerHTML +=`<p><span class="fa fa-star"></span></p>`;
                     }
                     
-        div.innerHTML+= `</div> 
+        div.innerHTML+= `
             <p>${item.description}</p>
-            </div>
         `;
 
         dataContainer.appendChild(div);
