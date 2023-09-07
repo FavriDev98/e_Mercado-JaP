@@ -257,7 +257,7 @@ star5.addEventListener('click', function() {
     
 })
 
-/* conseguir una hora */
+/* conseguir hora actual */
 
 var fechaHoraActual = new Date();
 var hora = fechaHoraActual.getHours();
@@ -278,7 +278,23 @@ if (segundos < 10) {
 
 var horaActual = hora + ":" + minutos + ":" + segundos;
 
+/* conseguir fecha actual */
 
+
+var fechaHoraActual = new Date();
+var año = fechaHoraActual.getFullYear();
+var mes = fechaHoraActual.getMonth() + 1;
+var dia = fechaHoraActual.getDate();
+
+if (mes < 10) {
+    mes = "0" + mes;
+}
+
+if (dia < 10) {
+    dia = "0" + dia;
+}
+
+var fechaActual = año + "-" + mes + "-" + dia;
 
 /* "Posteo" en comentarios */
 
@@ -298,7 +314,7 @@ btnPost.addEventListener('click', function() {
             <div class="coment-container">
                 <div class="coment"> 
                     <p>${user}</p>
-                    <p>${horaActual}</p>`
+                    <p>${fechaActual} ${horaActual}</p>`
                     const starCom = div.querySelector('.coment')
                     const comm = div.querySelector('.coment-container')
 
