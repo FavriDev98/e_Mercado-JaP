@@ -75,6 +75,7 @@ fetch(urlComment)
                     <p>${item.user}</p>
                     <p>${item.dateTime}</p>`
                     const starCom = div.querySelector('.coment')
+                    const comm = div.querySelector('.coment-container')
 
                     for (i = 0; i < value; i ++) {
                         starCom.innerHTML +=`<p><span class="fa fa-star checked" ></span></p>`;
@@ -84,7 +85,7 @@ fetch(urlComment)
                         starCom.innerHTML +=`<p><span class="fa fa-star"></span></p>`;
                     }
                     
-        div.innerHTML+= `
+        comm.innerHTML+= `
             <p>${item.description}</p>
         `;
 
