@@ -31,7 +31,6 @@ const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_l
 fetch(urlProduct)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         let product = data;
         const dataContainer = document.getElementById('informacion-shw')
 
@@ -60,7 +59,6 @@ const urlComment = 'https://japceibal.github.io/emercado-api/products_comments/'
 fetch(urlComment)
 .then(response => response.json())
 .then(data => {
-    console.log(data)
     const arrayProductsCom = data;
     const dataContainer = document.getElementById('comentarios');
 
@@ -257,4 +255,16 @@ star5.addEventListener('click', function() {
         star5.classList.add("checked");
     }
     
+})
+
+/* "Posteo" en comentarios */
+
+const btnPost = document.getElementById('boton_enviar');
+
+btnPost.addEventListener('click', function() {
+
+    const containerStar = document.getElementsByClassName('cont-stars')[0];
+    let starsToScore = containerStar.getElementsByClassName('checked').length;
+    let commToPost; 
+
 })

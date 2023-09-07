@@ -202,11 +202,6 @@ a.custom-card:hover {
   margin-top: 20px;
 }
 
-.form-control::placeholder {
-  color: rgb(182, 182, 182);
-}
-
-
 /* Seccion de Comentarios */
 .normal_font {
   font-weight: normal;
@@ -216,14 +211,15 @@ a.custom-card:hover {
   margin-bottom: 5px
 }
 
-#comentario{
-max-height: 70px;
-width: 100%;
-}
-
-.form_camp_border {
+.input-text {
+  border: 1px solid #ccc;
   border-radius: 5px;
-  border: 1px solid grey;
+  padding: 10px;
+  resize: none;
+  overflow-y: auto;
+  text-align: left;
+  height: 100px;
+  width: 100%;
 }
 
 .select {
@@ -246,6 +242,7 @@ width: 100%;
   height: 30px;
   width: 60px;
   transition: 300ms;
+  text-align: center;
 }
 
 .boton_formulario:hover {
@@ -259,7 +256,6 @@ width: 100%;
   width: 30%;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
 /* toquesitos para que se queden pillos esos commentsn */
