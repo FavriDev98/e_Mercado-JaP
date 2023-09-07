@@ -257,6 +257,29 @@ star5.addEventListener('click', function() {
     
 })
 
+/* conseguir una hora */
+
+var fechaHoraActual = new Date();
+var hora = fechaHoraActual.getHours();
+var minutos = fechaHoraActual.getMinutes();
+var segundos = fechaHoraActual.getSeconds();
+
+if (hora < 10) {
+    hora = "0" + hora;
+}
+
+if (minutos < 10) {
+    minutos = "0" + minutos;
+}
+
+if (segundos < 10) {
+    segundos = "0" + segundos;
+}
+
+var horaActual = hora + ":" + minutos + ":" + segundos;
+
+
+
 /* "Posteo" en comentarios */
 
 const btnPost = document.getElementById('boton_enviar');
@@ -265,6 +288,31 @@ btnPost.addEventListener('click', function() {
 
     const containerStar = document.getElementsByClassName('cont-stars')[0];
     let starsToScore = containerStar.getElementsByClassName('checked').length;
-    let commToPost; 
+    let commToPost = document.getElementById('comentario').value;
+    const dataContainer = document.getElementById('comentarios');
+    const div = document.createElement('div')
+    div.classList.add('data-com')
+    let user = localStorage.getItem('usuario');
 
+    div.innerHTML= `
+            <div class="coment-container">
+                <div class="coment"> 
+                    <p>${user}</p>
+                    <p>${horaActual}</p>`
+                    const starCom = div.querySelector('.coment')
+                    const comm = div.querySelector('.coment-container')
+
+                    for (i = 0; i < starsToScore; i ++) {
+                        starCom.innerHTML +=`<p><span class="fa fa-star checked" ></span></p>`;
+                    }
+                    let dif = 5 - starsToScore;
+                    for( i = 0; i < dif; i++) {
+                        starCom.innerHTML +=`<p><span class="fa fa-star"></span></p>`;
+                    }
+                    
+        comm.innerHTML+= `
+            <p>${commToPost}</p>
+        `;
+    
+    dataContainer.appendChild(div);
 })
