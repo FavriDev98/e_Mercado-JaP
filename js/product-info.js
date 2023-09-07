@@ -67,17 +67,27 @@ fetch(urlComment)
     arrayProductsCom.forEach(item => {
         const div = document.createElement('div')
         div.classList.add('data-com')
+        const value = item.score;
 
         div.innerHTML= `
             <div class="coment-container">
                 <div class="coment"> 
                     <p>${item.user}</p>
-                    <p>${item.dateTime}</p>
-                    <p>${item.score}</p>
-                </div> 
-                <p>${item.description}</p>
+                    <p>${item.dateTime}</p>`
+                    const starCom = div.querySelector('.coment')
+
+                    for (i = 0; i < value; i ++) {
+                        starCom.innerHTML +=`<p><span class="fa fa-star checked" ></span></p>`;
+                    }
+                    let dif = 5 - value;
+                    for( i = 0; i < dif; i++) {
+                        starCom.innerHTML +=`<p><span class="fa fa-star"></span></p>`;
+                    }
+                    
+        div.innerHTML+= `</div> 
+            <p>${item.description}</p>
             </div>
-            `;
+        `;
 
         dataContainer.appendChild(div);
 
@@ -87,3 +97,164 @@ fetch(urlComment)
 .catch(error => {
     console.error('Error al obtener los datos:', error);
 });
+/* counting stars ♪♫ */
+const star1 = document.getElementById('s1');
+const star2 = document.getElementById('s2');
+const star3 = document.getElementById('s3');
+const star4 = document.getElementById('s4');
+const star5 = document.getElementById('s5');
+/* 1 estrella re malo le producto wachin */
+star1.addEventListener('mouseenter', function() {
+        star1.style.color='orange';
+})
+
+star1.addEventListener('mouseleave', function() {
+    star1.style.color= '';
+})
+
+/* 2, malo pero puede mejorar */
+
+star2.addEventListener('mouseenter', function() {
+    star1.style.color='orange';
+    star2.style.color='orange';
+})
+
+star2.addEventListener('mouseleave', function() {
+    star1.style.color= '';
+    star2.style.color= '';
+})
+
+/* y 3... ni fu ni fa */
+
+star3.addEventListener('mouseenter', function() {
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+})
+
+star3.addEventListener('mouseleave', function() {
+    star1.style.color= '';
+    star2.style.color= '';
+    star3.style.color= '';
+})
+
+/* 4 es casi perfecto pa! */
+
+star4.addEventListener('mouseenter', function() {
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+    star4.style.color='orange';
+})
+
+star4.addEventListener('mouseleave', function() {
+    star1.style.color= '';
+    star2.style.color= '';
+    star3.style.color= '';
+    star4.style.color= '';
+})
+
+/* 5, eres perfecto como eres Coraje */
+
+star5.addEventListener('mouseenter', function() {
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+    star4.style.color='orange';
+    star5.style.color='orange';
+})
+
+star5.addEventListener('mouseleave', function() {
+    star1.style.color= '';
+    star2.style.color= '';
+    star3.style.color= '';
+    star4.style.color= '';
+    star5.style.color= '';
+})
+
+/* dejar marcadas las estrellas */
+
+/* 1 */
+
+star1.addEventListener('click', function() {
+    if (star1.classList.contains("checked")) {
+        star1.classList.remove("checked");
+        star2.classList.remove("checked");
+        star3.classList.remove("checked");
+        star4.classList.remove("checked");
+        star5.classList.remove("checked");
+    } else {
+        star1.classList.add("checked");
+    }
+    
+})
+
+/* 2 */
+
+star2.addEventListener('click', function() {
+    if (star2.classList.contains("checked")) {
+        star1.classList.remove("checked");
+        star2.classList.remove("checked");
+        star3.classList.remove("checked");
+        star4.classList.remove("checked");
+        star5.classList.remove("checked");
+    } else {
+        star1.classList.add("checked");
+        star2.classList.add("checked");
+    }
+    
+})
+
+/* 3 */
+
+star3.addEventListener('click', function() {
+    if (star2.classList.contains("checked")) {
+        star1.classList.remove("checked");
+        star2.classList.remove("checked");
+        star3.classList.remove("checked");
+        star4.classList.remove("checked");
+        star5.classList.remove("checked");
+    } else {
+        star1.classList.add("checked");
+        star2.classList.add("checked");
+        star3.classList.add("checked");
+    }
+    
+})
+
+/* 4 */
+
+star4.addEventListener('click', function() {
+    if (star2.classList.contains("checked")) {
+        star1.classList.remove("checked");
+        star2.classList.remove("checked");
+        star3.classList.remove("checked");
+        star4.classList.remove("checked");
+        star5.classList.remove("checked");
+    } else {
+        star1.classList.add("checked");
+        star2.classList.add("checked");
+        star3.classList.add("checked");
+        star4.classList.add("checked");
+    }
+    
+})
+
+/* 5 */
+
+star5.addEventListener('click', function() {
+    if (star2.classList.contains("checked")) {
+        star1.classList.remove("checked");
+        star2.classList.remove("checked");
+        star3.classList.remove("checked");
+        star4.classList.remove("checked");
+        star5.classList.remove("checked");
+    } else {
+        star1.classList.add("checked");
+        star2.classList.add("checked");
+        star3.classList.add("checked");
+        star4.classList.add("checked");
+        star5.classList.add("checked");
+    }
+    
+})
