@@ -48,11 +48,12 @@ fetch(url)
             let id = item.id; 
             
             div.innerHTML = `
-                <img src="${item.image}">
-                <h2 class="product-title" >${item.name} <p>${item.cost} ${item.currency}</p></h2>
-                <div class="description-container" >
-                <p>${item.description}</p>
+                <div style="background-image: url(${item.image}); background-size: cover; background-position: center; width: 100%; height: 150px;">
                 </div>
+                <div class="title">
+                    <h2 class="name" >${item.name}</h2> <h2 class="price">${item.cost} ${item.currency}</h2>
+                </div>
+                <p class="description">${item.description}</p>
             `;
             
             div.addEventListener('click', function() {

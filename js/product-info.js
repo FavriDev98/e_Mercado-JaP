@@ -308,7 +308,14 @@ btnPost.addEventListener('click', function() {
     const dataContainer = document.getElementById('comentarios');
     const div = document.createElement('div')
     div.classList.add('data-com')
-    let user = localStorage.getItem('usuario');
+    let user 
+    
+    if (localStorage.getItem('usuario') === null) {
+        user = sessionStorage.getItem('usuario');
+    }else {
+        user = localStorage.getItem('usuario');
+    }
+        
 
     div.innerHTML= `
             <div class="coment-container">
