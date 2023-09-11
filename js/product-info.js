@@ -66,7 +66,15 @@ fetch(urlProduct)
             `
             dataContainer.appendChild(imgB);
 
-});
+            let arrImg = document.querySelectorAll('.imgSelect img');
+
+            arrImg.forEach(item => {
+                item.addEventListener('click', function() {
+                    let selector = document.querySelector('#selector img')
+                    selector.src = item.src;
+            })            
+    });
+})
 
 const urlComment = 'https://japceibal.github.io/emercado-api/products_comments/' + item_localS + '.json'
 
@@ -352,15 +360,4 @@ btnPost.addEventListener('click', function() {
         `;
     
     dataContainer.appendChild(div);
-})
-
-/* llamar funcion SelecrImg con click */ 
-
-let arrImg = document.querySelectorAll('.imgSelect');
-
-arrImg.forEach(item => {
-    let selector = document.getElementById('selector')
-    selector.innerHTML = `
-        <img class="imgB" src="${img1}">    
-    `
 })
