@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 })
 
-
 let item_localS = localStorage.getItem('itemID');
 
 const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
@@ -40,17 +39,32 @@ fetch(urlProduct)
             div.innerHTML = `
                 <h1>${product.name}</h1>
                 <hr>
-                <h2 class="product-title" > </h2>
+                <h2 class="title" > </h2>
                 <p>${product.currency} ${product.cost}</p>
                 <div class="description-container" >
                 <p>${product.description}</p>
-                <div class='showimg';>
-                <img src="${product.images}">
-                </div>
                 </div> `
             ;
 
+            let images = product.images;
+            const contImg = document.createElement('div');
+            contImg.classList.add('contImg');
+            images.forEach(item => {
+                contImg.innerHTML += `
+                    <div class="imgSelect">
+                        <img src="${item}">
+                    <div>
+                `
+                div.appendChild(contImg);
+            }) 
+
             dataContainer.appendChild(div);
+            const imgB = document.createElement('div');
+            imgB.id="selector";
+            imgB.innerHTML = `
+                <img class="imgB" src="${images[0]}">
+            `
+            dataContainer.appendChild(imgB);
 
 });
 
@@ -338,4 +352,15 @@ btnPost.addEventListener('click', function() {
         `;
     
     dataContainer.appendChild(div);
+})
+
+/* llamar funcion SelecrImg con click */ 
+
+let arrImg = document.querySelectorAll('.imgSelect');
+
+arrImg.forEach(item => {
+    let selector = document.getElementById('selector')
+    selector.innerHTML = `
+        <img class="imgB" src="${img1}">    
+    `
 })

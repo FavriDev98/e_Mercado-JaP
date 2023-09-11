@@ -239,6 +239,7 @@ a.custom-card:hover {
   background-color: rgb(252, 143, 1);
   color: white;
   border: none;
+  border-radius: 5px;
   height: 30px;
   width: 60px;
   transition: 300ms;
