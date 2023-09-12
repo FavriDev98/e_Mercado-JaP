@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (user.length < 5 || password.length < 5) {
             document.getElementById('alert').classList.remove('hide');
+            document.getElementById('drkBk').classList.remove('hide');
         } else {
             if (document.getElementById('check-recordar').checked) {
                 localStorage.setItem('usuario', user);
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let xBtn = document.getElementById('x-btn');
     xBtn.addEventListener("click", function() {
         document.getElementById('alert').classList.add('hide');
+        document.getElementById('drkBk').classList.add('hide');
     })
 })
 
