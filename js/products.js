@@ -95,6 +95,7 @@ const filtBtn = document.getElementById('rangeFilterCount');
 filtBtn.addEventListener('click', () => {
     if (costMax.value == "" || costMin.value == "") {
         document.getElementById('alert').classList.remove('hide');
+        document.getElementById('drkBk').classList.remove('hide');
     } else {
         fetch(url)
         .then(response => response.json())
@@ -114,6 +115,7 @@ filtBtn.addEventListener('click', () => {
                     }
                 } else {
                     document.getElementById('alert').classList.remove('hide');
+                    document.getElementById('drkBk').classList.add('hide');
                 }
             }
         });
@@ -248,5 +250,6 @@ document.addEventListener('DOMContentLoaded', function(){
     let xBtn = document.getElementById('x-btn');
     xBtn.addEventListener("click", function() {
         document.getElementById('alert').classList.add('hide');
+        document.getElementById('drkBk').classList.add('hide');
     })
 })
