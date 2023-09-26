@@ -166,3 +166,38 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    
+
+    let mode = document.getElementById('mode')
+
+    mode.addEventListener('click', function() {
+
+        
+            const body = document.body;
+            body.classList.toggle("bg-dark"); // Agrega o quita una clase para aplicar el CSS de modo oscuro
+
+            const cartas = document.querySelectorAll('.list-group-item'); 
+            const cartasTexto = document.querySelectorAll('.list-group-item *');
+            console.log(cartasTexto);
+
+            cartas.forEach(carta => {
+
+                carta.classList.toggle("bg-dark");
+
+                
+            })
+
+            cartasTexto.forEach(carta => {
+
+                carta.classList.toggle("bg-dark");
+
+          })
+
+        })
+
+});
