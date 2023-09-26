@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/alertas.css">
+  <link rel="stylesheet" href="/css/cerrarSesion.css">
 </head>
 
 <body>
@@ -34,10 +37,10 @@
               <p id="user-name"></p>
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><button class="dropdown-item" type="button">Action</button></li>
-              <li><button class="dropdown-item" type="button">Another action</button></li>
+              <li><a id="btnC" class="dropdown-item" type="button" href="/cart.html">Carrito</a></li>
+              <li><a id="btnP" class="dropdown-item" type="button" href="/my-profile.html">Perfil</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><button class="dropdown-item" type="button">Cerrar sesión</button></li>
+              <li><div id="log-out" class="dropdown-item" type="button">Cerrar sesión</div></li>
             </ul>
           </div>
         </ul>
@@ -85,6 +88,15 @@
         </div>
       </div>
     </div>
+    <div id="drkBk" class="hide"></div>
+    <div class="hide" id="alert">
+      <p class="user-icon">&#xf007</p>
+      <p class="txt-alert">Desea cerrar sesión?</p>
+      <p class="xBtn" id="x-btn">&times;</p>
+      <div id="logOutConf" type="submit">
+        <p class="botonConfirmar">Confirmar</p>
+      </div>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -97,6 +109,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  <script src="/js/cerrarSesion.js"></script>
 </body>
 
 </html>

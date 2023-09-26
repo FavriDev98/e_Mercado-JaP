@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="./css/products.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="/css/alertas.css">
+  <link rel="stylesheet" href="/css/cerrarSesion.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -25,7 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -33,9 +35,17 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <p id="user-name"></p>
-          </li>
+          <div class="dropdown nav-item">
+            <div class="dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              <p id="user-name"></p>
+            </div>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><a id="btnC" class="dropdown-item" type="button" href="/cart.html">Carrito</a></li>
+              <li><a id="btnP" class="dropdown-item" type="button" href="/my-profile.html">Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><div id="log-out" class="dropdown-item" type="button">Cerrar sesión</div></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
@@ -82,6 +92,15 @@
     <div id="data-container" class="grid-container">
       <!--aca se genera la muestra de productos con js-->
     </div>
+    <div id="drkBk" class="hide"></div>
+      <div class="hide" id="alert">
+        <p class="user-icon">&#xf007</p>
+        <p class="txt-alert">Desea cerrar sesión?</p>
+        <p class="xBtn" id="x-btn">&times;</p>
+        <div id="logOutConf" type="submit">
+          <p class="botonConfirmar">Confirmar</p>
+        </div>
+    </div>
   </main>
   <div>
     <img src="">
@@ -106,6 +125,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="/js/cerrarSesion.js"></script>
 </body>
 
 </html>
