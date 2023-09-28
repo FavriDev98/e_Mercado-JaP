@@ -8,6 +8,50 @@ document.addEventListener("DOMContentLoaded", function(){
     window.location.href = './login.html';
 })
 
+function switchMode() {
+    
+    const body = document.body;
+        body.classList.toggle("bg-dark"); // Agrega o quita clase para aplicar el CSS de modo oscuro
+
+        const cartas = document.querySelectorAll('.list-group-item'); 
+        const cartasTexto = document.querySelectorAll('.list-group-item *');
+
+        cartas.forEach(carta => {
+
+            carta.classList.toggle("bg-dark");
+
+        })
+
+        cartasTexto.forEach(carta => {
+
+            carta.classList.toggle("bg-dark");
+
+      });
+
+}
+
+function controlModo() {
+    if(localStorage.getItem('mode') != null) {
+        const body = document.body;
+        body.classList.add("bg-dark"); // Agrega o quita clase para aplicar el CSS de modo oscuro
+
+        const cartas = document.querySelectorAll('.list-group-item'); 
+        const cartasTexto = document.querySelectorAll('.list-group-item *');
+
+        cartas.forEach(carta => {
+
+            carta.classList.add("bg-dark");
+
+        })
+
+        cartasTexto.forEach(carta => {
+
+            carta.classList.add("bg-dark");
+
+      });
+    };
+}
+
 document.addEventListener("DOMContentLoaded", function(){
     let userShow = document.getElementById('user-name');
     let userData = localStorage.getItem('usuario');
@@ -94,6 +138,7 @@ function showCategoriesList(){
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
+    controlModo()
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
@@ -116,8 +161,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
-            showCategoriesList()
-            //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+            showCategoriesList();
         }
     });
 
@@ -162,12 +206,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         else{
             maxCount = undefined;
         }
-
+        
         showCategoriesList();
     });
 });
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -175,58 +217,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     mode.addEventListener('click', function() {
 
+        switchMode()
+        if (localStorage.getItem('mode') == null) {
+            localStorage.setItem('mode', 1);
+        } else {
+            localStorage.removeItem('mode');
+        }
         
-            const body = document.body;
-            body.classList.toggle("bg-dark"); // Agrega o quita una clase para aplicar el CSS de modo oscuro
-
-            const cartas = document.querySelectorAll('.list-group-item'); 
-            const cartasTexto = document.querySelectorAll('.list-group-item *');
-            console.log(cartasTexto);
-            if (localStorage.getItem('mode') == null) {
-                localStorage.setItem('mode', 1);
-            } else {
-                localStorage.removeItem('mode');
-            };
-
-            cartas.forEach(carta => {
-
-                carta.classList.toggle("bg-dark");
-
-                
-            })
-
-            cartasTexto.forEach(carta => {
-
-                carta.classList.toggle("bg-dark");
-
-          });
-
         });
-
-});
-
-document.addEventListener('DOMContentLoaded', ()=>{
-
-    if(localStorage.getItem('mode') != null) {
-        const body = document.body;
-        body.classList.toggle("bg-dark"); // Agrega o quita una clase para aplicar el CSS de modo oscuro
-
-        const cartas = document.querySelectorAll('.list-group-item'); 
-        const cartasTexto = document.querySelectorAll('.list-group-item *');
-
-        cartas.forEach(carta => {
-
-            carta.classList.toggle("bg-dark");
-
-            
-        })
-
-        cartasTexto.forEach(carta => {
-
-            carta.classList.toggle("bg-dark");
-
-      });
-
-    };
-
 });
