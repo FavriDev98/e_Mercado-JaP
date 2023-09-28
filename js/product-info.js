@@ -99,11 +99,11 @@ fetch(urlProduct)
         
             `;
 
-            let arrImg = document.querySelectorAll('.imgB img');
+            let arrImg = document.querySelectorAll('.imgSelect img');
 
             arrImg.forEach(item => {
                 item.addEventListener('click', function() {
-                    let selector = document.querySelector('.active imgB img')
+                    let selector = document.querySelector('.active img')
                     selector.src = item.src;
             });          
     });
