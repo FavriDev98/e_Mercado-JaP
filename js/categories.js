@@ -170,9 +170,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
 document.addEventListener('DOMContentLoaded', function() {
-
     
-
     let mode = document.getElementById('mode')
 
     mode.addEventListener('click', function() {
@@ -184,6 +182,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const cartas = document.querySelectorAll('.list-group-item'); 
             const cartasTexto = document.querySelectorAll('.list-group-item *');
             console.log(cartasTexto);
+            if (localStorage.getItem('mode') == null) {
+                localStorage.setItem('mode', 1);
+            } else {
+                localStorage.removeItem('mode');
+            };
 
             cartas.forEach(carta => {
 
@@ -196,8 +199,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 carta.classList.toggle("bg-dark");
 
-          })
+          });
 
+        });
+
+});
+
+document.addEventListener('DOMContentLoaded', ()=>{
+
+    if(localStorage.getItem('mode') != null) {
+        const body = document.body;
+        body.classList.toggle("bg-dark"); // Agrega o quita una clase para aplicar el CSS de modo oscuro
+
+        const cartas = document.querySelectorAll('.list-group-item'); 
+        const cartasTexto = document.querySelectorAll('.list-group-item *');
+
+        cartas.forEach(carta => {
+
+            carta.classList.toggle("bg-dark");
+
+            
         })
+
+        cartasTexto.forEach(carta => {
+
+            carta.classList.toggle("bg-dark");
+
+      });
+
+    };
 
 });
