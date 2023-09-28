@@ -56,9 +56,15 @@ fetch(urlProduct)
                     <div>
                 `
                 div.appendChild(contImg);
-            }) 
+            });
 
-            var carouselInt = document.getElementById('carousel'); 
+
+            const carrusel = document.createElement('div');
+            carrusel.classList.add('carousel');
+            carrusel.classList.add('slide');
+            carrusel.id="carrusel";
+            div.appendChild(carrusel);
+
             dataContainer.appendChild(div);
             const imgB = document.createElement('div');
             imgB.id="selector";
@@ -78,15 +84,28 @@ fetch(urlProduct)
             <img class="d-block w-100" src="${images[3]}">
             </div>
             `;
-            dataContainer.appendChild(imgB);
+            carrusel.appendChild(imgB);
+            dataContainer.appendChild(carrusel);
 
-            let arrImg = document.querySelectorAll('.imgSelect img');
+            carrusel.innerHTML += `
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        
+            `;
+
+            let arrImg = document.querySelectorAll('.imgB img');
 
             arrImg.forEach(item => {
                 item.addEventListener('click', function() {
-                    let selector = document.querySelector('#selector img')
+                    let selector = document.querySelector('.active imgB img')
                     selector.src = item.src;
-            });            
+            });          
     });
 });
 

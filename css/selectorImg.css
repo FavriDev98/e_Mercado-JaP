@@ -20,3 +20,12 @@
     padding-top: 25px;
     padding-bottom: 25px;
 }
+
+#carrusel {
+    width: 590px;
+}
+
+.carousel-inner>.item {
+    width: 100%;
+
+}
