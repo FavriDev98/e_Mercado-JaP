@@ -47,16 +47,17 @@ fetch(urlProduct)
             ;
 
             let images = product.images;
-            const contImg = document.createElement('div');
-            contImg.classList.add('contImg');
-            images.forEach(item => {
+                const contImg = document.createElement('div');
+                contImg.classList.add('contImg');
+
+                images.forEach((item, index) => {
                 contImg.innerHTML += `
-                    <div class="imgSelect">
+                    <div class="imgSelect" data-index="${index}">
                         <img src="${item}">
-                    <div>
-                `
-                div.appendChild(contImg);
-            });
+                    </div>
+                    `;
+                    div.appendChild(contImg);
+                });
 
 
             const carrusel = document.createElement('div');
@@ -67,23 +68,17 @@ fetch(urlProduct)
 
             dataContainer.appendChild(div);
             const imgB = document.createElement('div');
-            imgB.id="selector";
-            imgB.className="carousel-inner";
-            imgB.innerHTML = `
-            <div class="carousel-item active imgB">
-                <img class="d-block w-100" src="${images[0]}">
-            </div>
-            <div class="carousel-item imgB">
-                <img class="d-block w-100" src="${images[1]}">
-            </div>
-            <div class="carousel-item imgB">
-                <img class="d-block w-100" src="${images[2]}">
-            </div>
-            <div class="carousel-item imgB">
-                
-            <img class="d-block w-100" src="${images[3]}">
-            </div>
-            `;
+            imgB.id = 'selector';
+            imgB.className = 'carousel-inner';
+
+            images.forEach((item, index) => {
+                imgB.innerHTML += `
+                    <div class="carousel-item imgB ${index === 0 ? 'active' : ''}">
+                        <img class="d-block w-100" src="${item}" id="carousel-img-${index}">
+                    </div>
+                    `;
+                });
+
             carrusel.appendChild(imgB);
             dataContainer.appendChild(carrusel);
 
@@ -99,13 +94,22 @@ fetch(urlProduct)
         
             `;
 
-            let arrImg = document.querySelectorAll('.imgB img');
+            const imgSelects = document.querySelectorAll('.imgSelect');
+imgSelects.forEach((imgSelect, index) => {
+    imgSelect.addEventListener('click', function () {
+        // Obtener el índice de la imagen pequeña
+        const selectedIndex = imgSelect.getAttribute('data-index');
 
-            arrImg.forEach(item => {
-                item.addEventListener('click', function() {
-                    let selector = document.querySelector('.active imgB img')
-                    selector.src = item.src;
-            });          
+        // Cambiar la clase 'active' en la imagen grande del carrusel
+        const carouselImages = document.querySelectorAll('.carousel-item.imgB');
+        carouselImages.forEach((carouselImage, i) => {
+            if (i === parseInt(selectedIndex)) {
+                carouselImage.classList.add('active');
+            } else {
+                carouselImage.classList.remove('active');
+            }
+            });
+        });
     });
 });
 

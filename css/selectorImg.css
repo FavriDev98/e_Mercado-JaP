@@ -15,6 +15,7 @@
 }
 
 #selector {
+    display: flex;
     height: auto;
     padding-left: 5px;
     padding-top: 25px;
