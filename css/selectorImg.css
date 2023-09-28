@@ -6,10 +6,12 @@
 .imgSelect img {
     width: 150px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .imgB {
     width: 590px;
+    float: unset;
 }
 
 #selector {
