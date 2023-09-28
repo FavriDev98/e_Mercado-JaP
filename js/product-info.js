@@ -97,10 +97,8 @@ fetch(urlProduct)
             const imgSelects = document.querySelectorAll('.imgSelect');
 imgSelects.forEach((imgSelect, index) => {
     imgSelect.addEventListener('click', function () {
-        // Obtener el índice de la imagen pequeña
         const selectedIndex = imgSelect.getAttribute('data-index');
 
-        // Cambiar la clase 'active' en la imagen grande del carrusel
         const carouselImages = document.querySelectorAll('.carousel-item.imgB');
         carouselImages.forEach((carouselImage, i) => {
             if (i === parseInt(selectedIndex)) {
