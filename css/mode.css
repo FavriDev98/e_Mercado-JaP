@@ -7,3 +7,7 @@
     background-color: #fff;
     color: #303030;
 }
+
+.dropdown-toggle::after {
+    content: none;
+}
