@@ -397,3 +397,37 @@ btnPost.addEventListener('click', function() {
     
     dataContainer.appendChild(div);
 });
+
+/* seccion relacionados */
+
+const urlRel = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
+
+fetch(urlRel)
+.then(response => response.json())
+.then(data => {
+    const arrayRel = data.relatedProducts;
+
+    arrayRel.forEach(item => {
+        const rel = document.getElementById('rel');
+        const div = document.createElement('div');
+        div.classList.add('data-item');
+            
+        div.innerHTML = `
+            <div style="background-image: url(${item.image}); background-size: cover; background-position: center; width: 100%; height: 150px;">
+            </div>
+            <div class="title">
+                <h2 class="name" >${item.name}</h2> <h2 class="price"</h2>
+            </div>
+            `;
+            
+        div.addEventListener('click', function() {
+            setItemID(id);
+            window.location = "product-info.html";
+        });
+
+        rel.appendChild(div);
+    });
+})
+    .catch(error => {
+        console.error('Error al obtener los datos:', error);
+})
