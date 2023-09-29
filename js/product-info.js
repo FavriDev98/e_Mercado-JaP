@@ -95,17 +95,17 @@ fetch(urlProduct)
             `;
 
             const imgSelects = document.querySelectorAll('.imgSelect');
-imgSelects.forEach((imgSelect, index) => {
-    imgSelect.addEventListener('click', function () {
-        const selectedIndex = imgSelect.getAttribute('data-index');
+            imgSelects.forEach((imgSelect, index) => {
+            imgSelect.addEventListener('click', function () {
+            const selectedIndex = imgSelect.getAttribute('data-index');
 
-        const carouselImages = document.querySelectorAll('.carousel-item.imgB');
-        carouselImages.forEach((carouselImage, i) => {
-            if (i === parseInt(selectedIndex)) {
-                carouselImage.classList.add('active');
-            } else {
-                carouselImage.classList.remove('active');
-            }
+            const carouselImages = document.querySelectorAll('.carousel-item.imgB');
+            carouselImages.forEach((carouselImage, i) => {
+                if (i === parseInt(selectedIndex)) {
+                    carouselImage.classList.add('active');
+                } else {
+                    carouselImage.classList.remove('active');
+                };
             });
         });
     });
