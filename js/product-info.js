@@ -411,10 +411,6 @@ fetch(urlRel)
 .then(response => response.json())
 .then(data => {
     const arrayRel = data.relatedProducts;
-    const contRel = document.getElementById('contRel');
-    contRel.innerHTML+=`
-        <h2>Lo usuarios interesados en ${data.name} tambien buscaron</h2>
-    `;
 
     arrayRel.forEach(item => {
         const rel = document.getElementById('rel');
