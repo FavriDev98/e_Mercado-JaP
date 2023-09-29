@@ -400,12 +400,21 @@ btnPost.addEventListener('click', function() {
 
 /* seccion relacionados */
 
+function setItemID(id) {
+    localStorage.setItem("itemID", id);
+    window.location = "product-info.html"
+}
+
 const urlRel = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
 
 fetch(urlRel)
 .then(response => response.json())
 .then(data => {
     const arrayRel = data.relatedProducts;
+    const contRel = document.getElementById('contRel');
+    contRel.innerHTML+=`
+        <h2>Lo usuarios interesados en ${data.name} tambien buscaron</h2>
+    `;
 
     arrayRel.forEach(item => {
         const rel = document.getElementById('rel');
@@ -421,10 +430,8 @@ fetch(urlRel)
             `;
             
         div.addEventListener('click', function() {
-            setItemID(id);
-            window.location = "product-info.html";
+            setItemID(item.id);
         });
-
         rel.appendChild(div);
     });
 })
