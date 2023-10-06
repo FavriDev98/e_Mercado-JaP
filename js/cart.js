@@ -23,18 +23,53 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 })
 
-const urlUserCart = 'https://japceibal.github.io/user_cart/25801.json';
-document.addEventListener("DOMContentLoaded", function(){
 
-    let countBox = document.getElementById(/*id caja de cantidades*/);
 
-    countBox.value = urlUserCart.articles.count;
-})
+const urlUserCart = 'https://japceibal.github.io/emercado-api/user_cart/25801.json';
 
-let countBox = document.getElementById(/*id caja de cantidades*/);
-countBox.addEventListener("change", function(){
+let currency;
 
-    let boxValue = document.getElementById(/*id de la caja de balor total*/);
-    boxValue.value = urlUserCart.articles.unitCost * countBox.value;
+fetch(urlUserCart)
+.then(response => response.json())
+.then(data => {
 
-})
+    currency = data.articles[0].currency;
+
+    document.getElementById('name-cart').innerText = data.articles[0].name
+    document.getElementById('cost-cart').innerText = data.articles[0].unitCost
+    document.getElementById('cant-cart').value = data.articles[0].count
+    document.getElementById('img-cart').src = data.articles[0].image
+    document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost
+    
+
+    
+});
+
+    let countBox = document.getElementById('cant-cart');
+
+    countBox.addEventListener("change", function(){
+
+    if(countBox.value < 0) {
+
+        countBox.value = 0;
+    }
+    else {
+
+        let cantBox = document.getElementById('cant-cart').value;
+
+        let valor = parseInt(document.getElementById('cost-cart').innerText)
+
+        let boxValue = parseInt(document.getElementById('subtotal-cart').innerText);
+        boxValue = valor * cantBox;
+        document.getElementById('subtotal-cart').innerText = currency + " " + boxValue;
+
+    };
+
+    
+});
+
+
+
+
+
+
