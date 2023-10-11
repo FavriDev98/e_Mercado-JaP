@@ -31,7 +31,6 @@ function addToCart(id){
     alert('El producto se agregó al carrito.')
 }
 
-
 const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
 
 fetch(urlProduct)
@@ -117,11 +116,12 @@ fetch(urlProduct)
             });
         });
     });
+    
     /* Llamado a la función para agregar al carrito */
     const cartButton = document.getElementById('cart-button');
             cartButton.addEventListener('click', function(){
                 addToCart();
-            });    
+            });        
 });
 
 const urlComment = 'https://japceibal.github.io/emercado-api/products_comments/' + item_localS + '.json';

@@ -75,7 +75,13 @@ fetch(urlCarrito)
         const carrito = document.getElementById('newProduct')
 
         carrito.innerHTML = `
-            <h1>${product.name}</h1>
+        <img src="${product.images[0]}" class="col-md-2"> 
+        <div class="col-md-2"><p>${product.name}</p> </div>
+        <div class="col-md-2"><p>${product.cost}</p> </div>
+        <div  class="col-md-2"> <input id="cant-cart" class="form-control form-control-square" type="number"></div>
+        <div class="col-md-2"> </div>
+        <hr class="mt-3">
+
         `
     })
 
