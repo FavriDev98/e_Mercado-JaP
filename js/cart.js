@@ -40,9 +40,6 @@ fetch(urlUserCart)
     document.getElementById('cant-cart').value = data.articles[0].count
     document.getElementById('img-cart').src = data.articles[0].image
     document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost
-    
-
-    
 });
 
     let countBox = document.getElementById('cant-cart');
@@ -68,8 +65,51 @@ fetch(urlUserCart)
     
 });
 
+let addProduct = localStorage.getItem('itemID');
+const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + addProduct + '.json';
+
+fetch(urlCarrito)
+.then(response => response.json())
+.then(data => {
+        let product = data; 
+        const carrito = document.getElementById('newProduct')
+
+        carrito.innerHTML = `
+            <h1>${product.name}</h1>
+        `
+    })
 
 
+/* 
 
+let addProduct = localStorage.getItem('itemID');
+const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + addProduct + '.json';
 
+fetch(urlCarrito)
+.then(response => response.json())
+.then(data => {
+        let product = data; 
+        const carrito = document.getElementById('newProduct')
 
+        carrito.innerHTML = `
+            <h1>${product.name}</h1>
+        `
+    })
+
+    let productoAgregado = localStorage.getItem('item_localS');
+const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
+
+fetch(urlProduct)
+.then(response => response.json())
+.then(data => {
+        let product = data; 
+        const carrito = document.getElementById('newProduct')
+        const agregado = document.createElement('div');
+
+        agregado.innerHTML = `
+            <h1>${product.name}</h1>
+        `
+        carrito.appendChild(agregado);
+    })
+
+    */

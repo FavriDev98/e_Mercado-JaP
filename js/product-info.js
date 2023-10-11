@@ -25,6 +25,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
 let item_localS = localStorage.getItem('itemID');
 
+/* Función para agregar al carrito */
+function addToCart(id){
+    localStorage.setItem("item_localS", id);
+    alert('El producto se agregó al carrito.')
+}
+
+
 const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
 
 fetch(urlProduct)
@@ -38,6 +45,7 @@ fetch(urlProduct)
 
             div.innerHTML = `
                 <h1>${product.name}</h1>
+                <button id="cart-button">Comprar</button>
                 <hr>
                 <h2 class="title" > </h2>
                 <p>${product.currency} ${product.cost}</p>
@@ -109,6 +117,11 @@ fetch(urlProduct)
             });
         });
     });
+    /* Llamado a la función para agregar al carrito */
+    const cartButton = document.getElementById('cart-button');
+            cartButton.addEventListener('click', function(){
+                addToCart();
+            });    
 });
 
 const urlComment = 'https://japceibal.github.io/emercado-api/products_comments/' + item_localS + '.json';
