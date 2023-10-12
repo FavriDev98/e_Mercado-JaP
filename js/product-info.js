@@ -25,12 +25,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 let item_localS = localStorage.getItem('itemID');
 
-/* Función para agregar al carrito */
-function addToCart(id){
-    localStorage.setItem("item_localS", id);
-    alert('El producto se agregó al carrito.')
-}
-
 const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
 
 fetch(urlProduct)
@@ -119,8 +113,11 @@ fetch(urlProduct)
     
     /* Llamado a la función para agregar al carrito */
     const cartButton = document.getElementById('cart-button');
-            cartButton.addEventListener('click', function(){
-                addToCart();
+    let carritoProducts = JSON.parse(localStorage.getItem('carritoProducts')) || [];
+            cartButton.addEventListener('click', ()=>{
+                carritoProducts.push(localStorage.getItem('itemID'));
+                localStorage.setItem('carritoProducts', JSON.stringify(carritoProducts));
+                
             });        
 });
 
@@ -227,7 +224,7 @@ star4.addEventListener('mouseleave', function() {
 
 star5.addEventListener('mouseenter', function() {
     star1.style.color='orange';
-    star2.style.color='orange';
+    star2.style.color='orange'; 
     star3.style.color='orange';
     star4.style.color='orange';
     star5.style.color='orange';

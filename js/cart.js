@@ -42,13 +42,31 @@ fetch(urlUserCart)
     document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost
 });
 
-    let countBox = document.getElementById('cant-cart');
+function sumaParcial(){
+let arraySumItem = document.getElementsByClassName('sum-item').value;
 
-    countBox.addEventListener("change", function(){
+let arrayCountBox = document.getElementsByClassName('count-box');
 
-    if(countBox.value < 0) {
+let arrayCostData = document.getElementsByClassName('data-cost')
+arraySumItem.forEach(element =>{
+    arrayCountBox.forEach(item => {
+    let i = element.indexSuma
 
-        countBox.value = 0;
+    if(element.indexSuma == item.index) {
+        element.value = arrayCountBox[i] * arrayCostData[i]
+    } 
+
+    
+    
+    })
+    
+
+
+
+
+ /*   if(element.indexSuma == 0) {
+
+        element.indexSuma = 0;
     }
     else {
 
@@ -61,31 +79,39 @@ fetch(urlUserCart)
         document.getElementById('subtotal-cart').innerText = currency + " " + boxValue;
 
     };
-
-    
+*/
 });
+};
+let countBox = document.getElementById('cant-cart');
 
-let addProduct = localStorage.getItem('itemID');
-const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + addProduct + '.json';
+    countBox.addEventListener("change", sumaParcial());
 
-fetch(urlCarrito)
-.then(response => response.json())
-.then(data => {
-        let product = data; 
-        const carrito = document.getElementById('newProduct')
+let addProduct = localStorage.getItem('carritoProducts');
+let arrAddProduct = JSON.parse(addProduct)
+let i = 0
+arrAddProduct.forEach(item => {
+const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item + '.json';
 
-        carrito.innerHTML = `
-        <img src="${product.images[0]}" class="col-md-2"> 
-        <div class="col-md-2"><p>${product.name}</p> </div>
-        <div class="col-md-2"><p>${product.cost}</p> </div>
-        <div  class="col-md-2"> <input id="cant-cart" class="form-control form-control-square" type="number"></div>
-        <div class="col-md-2"> </div>
-        <hr class="mt-3">
+    fetch(urlCarrito)
+    .then(response => response.json())
+    .then(data => {
+        let div = document.createElement('div');
+        div.classList.add('row');
+            div.classList.add('list-item');
+            div.setAttribute('data-index', i);
 
-        `
-    })
-
-
+        div.innerHTML = `
+            <img src="${data.images[0]}" class="col-md-2"> 
+            <div class="col-md-2"><p>${data.name}</p> </div>
+            <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
+            <div  class="col-md-2"> <input index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
+            <div class="col-md-2 count-box" indexSuma='${i}'> </div>
+            <hr class="mt-3">
+    `
+        document.getElementById('grid-cart').appendChild(div)
+        i++
+    });
+})
 /* 
 
 let addProduct = localStorage.getItem('itemID');
