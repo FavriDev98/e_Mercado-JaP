@@ -43,22 +43,28 @@ fetch(urlUserCart)
 });
 
 function sumaParcial(){
-let arraySumItem = document.getElementsByClassName('sum-item').value;
+    // array de los valores de la cajitas
+let arraySumItem = document.getElementsByClassName('sum-item');
+let arraySumItemValue = [];
 
+    for(let i = 0; i < arraySumItem.length; i++){
+        arraySumItemValue[i] = arraySumItem[i].value
+    };
+
+
+
+
+// array valores subtotal
 let arrayCountBox = document.getElementsByClassName('count-box');
-
 let arrayCostData = document.getElementsByClassName('data-cost')
-arraySumItem.forEach(element =>{
-    arrayCountBox.forEach(item => {
-    let i = element.indexSuma
-
-    if(element.indexSuma == item.index) {
-        element.value = arrayCountBox[i] * arrayCostData[i]
-    } 
-
-    
-    
-    })
+arraySumItemValue.forEach(element =>{
+    for(let i = 0; i < arrayCountBox.length; i++){
+        if(element.indexSuma == arrayCountBox[i].index) {
+            element.value = arraySumItemValue[i] * arrayCostData[i]
+        }
+    };
+    console.log(element.value)
+});
     
 
 
@@ -80,7 +86,6 @@ arraySumItem.forEach(element =>{
 
     };
 */
-});
 };
 let countBox = document.getElementById('cant-cart');
 
