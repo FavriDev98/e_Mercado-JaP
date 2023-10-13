@@ -52,18 +52,25 @@ let arraySumItemValue = [];
     };
 
 
+let arrayPingo = document.getElementsByClassName('pingo');
 
-
-// array valores subtotal
+// array valores subtotal (valor total)
 let arrayCountBox = document.getElementsByClassName('count-box');
-let arrayCostData = document.getElementsByClassName('data-cost')
+// array valor unidad product
+let arrayCostData = document.getElementsByClassName('data-cost');
+let arrayCostDataValue = [];
+
+    for(let i = 0; i < arrayCostData.length; i++){
+        arrayCostDataValue[i] = arrayCostData[i].innerText
+    };
+
+// indexSuma = valorsubtotal
 arraySumItemValue.forEach(element =>{
     for(let i = 0; i < arrayCountBox.length; i++){
         if(element.indexSuma == arrayCountBox[i].index) {
-            element.value = arraySumItemValue[i] * arrayCostData[i]
+            arrayPingo[i].innerText = arraySumItemValue[i] * arrayCostDataValue[i];
         }
     };
-    console.log(element.value)
 });
     
 
@@ -110,13 +117,13 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
             <div class="col-md-2"><p>${data.name}</p> </div>
             <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
             <div  class="col-md-2"> <input index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
-            <div class="col-md-2 count-box" indexSuma='${i}'> </div>
+            <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
             <hr class="mt-3">
     `
         document.getElementById('grid-cart').appendChild(div)
         i++
     });
-})
+});
 /* 
 
 let addProduct = localStorage.getItem('itemID');
