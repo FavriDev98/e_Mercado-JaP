@@ -72,28 +72,8 @@ arraySumItemValue.forEach(element =>{
         }
     };
 });
-    
-
-
-
-
- /*   if(element.indexSuma == 0) {
-
-        element.indexSuma = 0;
-    }
-    else {
-
-        let cantBox = document.getElementById('cant-cart').value;
-
-        let valor = parseInt(document.getElementById('cost-cart').innerText)
-
-        let boxValue = parseInt(document.getElementById('subtotal-cart').innerText);
-        boxValue = valor * cantBox;
-        document.getElementById('subtotal-cart').innerText = currency + " " + boxValue;
-
-    };
-*/
 };
+
 let countBox = document.getElementById('cant-cart');
 
     countBox.addEventListener("change", sumaParcial());
@@ -120,40 +100,7 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
             <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
             <hr class="mt-3">
     `
-        document.getElementById('grid-cart').appendChild(div)
-        i++
+        document.getElementById('grid-cart').appendChild(div);
+        i++;
     });
 });
-/* 
-
-let addProduct = localStorage.getItem('itemID');
-const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + addProduct + '.json';
-
-fetch(urlCarrito)
-.then(response => response.json())
-.then(data => {
-        let product = data; 
-        const carrito = document.getElementById('newProduct')
-
-        carrito.innerHTML = `
-            <h1>${product.name}</h1>
-        `
-    })
-
-    let productoAgregado = localStorage.getItem('item_localS');
-const urlProduct = 'https://japceibal.github.io/emercado-api/products/' + item_localS + '.json';
-
-fetch(urlProduct)
-.then(response => response.json())
-.then(data => {
-        let product = data; 
-        const carrito = document.getElementById('newProduct')
-        const agregado = document.createElement('div');
-
-        agregado.innerHTML = `
-            <h1>${product.name}</h1>
-        `
-        carrito.appendChild(agregado);
-    })
-
-    */
