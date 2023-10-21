@@ -28,6 +28,13 @@ document.addEventListener("DOMContentLoaded", function(){
 const urlUserCart = 'https://japceibal.github.io/emercado-api/user_cart/25801.json';
 
 let currency;
+let valorAutoDado;
+let totalFinal = document.getElementById('total');
+let subtotal = document.getElementById('subtotal');
+let sumaTotal = 0;
+let tipoEnvio = 0.15;
+let valorEnvio;
+let costoDeEnvio = document.getElementById('costo-de-envio');
 
 fetch(urlUserCart)
 .then(response => response.json())
@@ -35,11 +42,16 @@ fetch(urlUserCart)
 
     currency = data.articles[0].currency;
 
-    document.getElementById('name-cart').innerText = data.articles[0].name
-    document.getElementById('cost-cart').innerText = data.articles[0].unitCost
-    document.getElementById('cant-cart').value = data.articles[0].count
-    document.getElementById('img-cart').src = data.articles[0].image
-    document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost
+    document.getElementById('name-cart').innerText = data.articles[0].name;
+    document.getElementById('cost-cart').innerText = data.articles[0].unitCost;
+    document.getElementById('cant-cart').value = data.articles[0].count;
+    document.getElementById('img-cart').src = data.articles[0].image;
+    document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost;
+    totalFinal.innerText = currency + " " + data.articles[0].unitCost;
+    subtotal.innerText = currency + " " + data.articles[0].unitCost;
+    let valorEnvio = Match.round((parseInt(data.articles[0].unitCost),10 * tipoEnvio));
+    costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
+    
 });
 
 function sumaParcial(){
@@ -104,3 +116,103 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
         i++;
     });
 });
+
+// Funciones para calcular el valor total
+
+
+let valorTotalFinal = 0;
+let divProductos = document.getElementById('grid-cart');
+
+//Valor Subtotal en dolares
+
+divProductos.addEventListener("change", function() {
+
+    sumaTotal = 0;
+    let subtotalesCrudos = document.getElementsByClassName('count-box');
+    let ValorAutoEntregado = document.getElementById('subtotal-cart').innerHTML.match(/\d+/g);
+
+    let subtotalesValores = [];
+    subtotalesValores.push(parseInt(ValorAutoEntregado[0]), 10);
+
+    for (let i = 0; i < subtotalesCrudos.length; i++) {
+
+        //Pasar valor a dolares
+        if (subtotalesCrudos[i].innerText.includes("UYU")) {
+
+            let valorDolar = (subtotalesCrudos[i].innerText.match(/\d+/g))[0];
+            valorDolar = Math.round(valorDolar / 41);
+            subtotalesValores[i+1] = valorDolar;
+
+        } else {
+            subtotalesValores[i+1] = parseInt((subtotalesCrudos[i].innerText.match(/\d+/g))[0],10);
+        }
+
+    }
+
+    subtotalesValores.forEach(valor => {
+        sumaTotal += valor;
+    });
+    console.log(sumaTotal)
+    subtotal.innerText = 'USD ' + ( sumaTotal);
+
+    // Costo Total
+
+    valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
+
+    let valorSinEnvio = parseInt(subtotal.innerText.match(/\d+/g),10);
+
+    console.log(valorEnvio);
+    console.log(valorSinEnvio);
+
+    valorTotalFinal = valorSinEnvio + valorEnvio;
+
+    totalFinal.innerText = 'USD ' + valorTotalFinal;
+
+    let opcionCinco = document.getElementById('exampleRadios3');
+    let opcionSiete = document.getElementById('exampleRadios2');
+    let opcionQuince = document.getElementById('exampleRadios1');
+
+    
+    if (opcionQuince.checked) {
+        tipoEnvio = 0.15;
+        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
+        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
+    } else if (opcionSiete.checked) {
+        tipoEnvio = 0.07;
+        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
+        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
+    } else if (opcionCinco.checked) {
+        tipoEnvio = 0.05;
+        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
+        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
+    }
+
+})
+
+// Costo del envio
+
+let contenedorChecks = document.getElementById('check-container');
+
+contenedorChecks.addEventListener("change", function() {
+
+    let opcionCinco = document.getElementById('exampleRadios3');
+    let opcionSiete = document.getElementById('exampleRadios2');
+    let opcionQuince = document.getElementById('exampleRadios1');
+
+    
+    if (opcionQuince.checked) {
+        tipoEnvio = 0.15;
+        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
+        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
+    } else if (opcionSiete.checked) {
+        tipoEnvio = 0.07;
+        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
+        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
+    } else if (opcionCinco.checked) {
+        tipoEnvio = 0.05;
+        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
+        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
+    }
+})
+
+

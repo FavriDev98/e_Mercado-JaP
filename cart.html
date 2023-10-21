@@ -67,7 +67,7 @@
           <div class="col-md-2"></div>
           <hr class="mt-2">
       </div>
-      <div class="row">
+      <div class="row" id="autoEntrega">
         <img id="img-cart" class="col-md-2"> 
         <div id="name-cart" class="col-md-2"> </div>
         <div id="cost-cart" class="col-md-2"> </div>
@@ -79,10 +79,10 @@
     </div>
     <!-- FORMULARIO PUNTO 2 -->
     <!-- TIOS DE ENVIO -->
-    <div class=" container">
+    <div class=" container" id="check-container">
       <h4 class="title">Tipo de envio</h4>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
         <label class="form-check-label" for="exampleRadios1">
           Premium 2 a 5 dias premium (15%)
         </label>
@@ -121,6 +121,39 @@
       <!-- FIN DIRECCION  -->
 </div>
     <!-- FIN FORMULARIO -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <hr class="mt-4">
+        </div>
+      </div>
+    </div>>
+
+    <!-- Calculos totales de carrito -->
+    <!-- Punto 1 entrega 6 -->
+    
+    <div class="container">
+      <div class=" row mt-1">
+        <h3 class="title">Costos</h3>
+        <div class="row">
+          <div class="form-group col-lg-12 mt-2">
+            <h5>Subtotal</h5>
+            <p class="form-control" id="subtotal">0</p>
+          </div>
+          <div class="form-group col-lg-12 mt-2">
+            <h5>Costo de envío</h5>
+            <p class="form-control" id="costo-de-envio">0</p>
+          </div>
+          <div class="form-group col-lg-12 mt-2">
+            <h5>Total ($)</h5>
+            <p class="form-control" id="total">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final de Calculos totales -->
   </main>
 
   <footer class="text-muted">
