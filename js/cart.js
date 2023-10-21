@@ -49,8 +49,6 @@ fetch(urlUserCart)
     document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost;
     totalFinal.innerText = currency + " " + data.articles[0].unitCost;
     subtotal.innerText = currency + " " + data.articles[0].unitCost;
-    let valorEnvio = Match.round((parseInt(data.articles[0].unitCost),10 * tipoEnvio));
-    costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
     
 });
 
