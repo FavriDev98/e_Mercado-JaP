@@ -40,36 +40,67 @@ fetch(urlUserCart)
     document.getElementById('cant-cart').value = data.articles[0].count
     document.getElementById('img-cart').src = data.articles[0].image
     document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost
-    
-
-    
 });
 
-    let countBox = document.getElementById('cant-cart');
+function sumaParcial(){
+    // array de los valores de la cajitas
+let arraySumItem = document.getElementsByClassName('sum-item');
+let arraySumItemValue = [];
 
-    countBox.addEventListener("change", function(){
-
-    if(countBox.value < 0) {
-
-        countBox.value = 0;
-    }
-    else {
-
-        let cantBox = document.getElementById('cant-cart').value;
-
-        let valor = parseInt(document.getElementById('cost-cart').innerText)
-
-        let boxValue = parseInt(document.getElementById('subtotal-cart').innerText);
-        boxValue = valor * cantBox;
-        document.getElementById('subtotal-cart').innerText = currency + " " + boxValue;
-
+    for(let i = 0; i < arraySumItem.length; i++){
+        arraySumItemValue[i] = arraySumItem[i].value
     };
 
-    
+
+let arrayPingo = document.getElementsByClassName('pingo');
+
+// array valores subtotal (valor total)
+let arrayCountBox = document.getElementsByClassName('count-box');
+// array valor unidad product
+let arrayCostData = document.getElementsByClassName('data-cost');
+let arrayCostDataValue = [];
+
+    for(let i = 0; i < arrayCostData.length; i++){
+        arrayCostDataValue[i] = arrayCostData[i].innerText
+    };
+
+// indexSuma = valorsubtotal
+arraySumItemValue.forEach(element =>{
+    for(let i = 0; i < arrayCountBox.length; i++){
+        if(element.indexSuma == arrayCountBox[i].index) {
+            arrayPingo[i].innerText = arraySumItemValue[i] * arrayCostDataValue[i];
+        }
+    };
 });
+};
 
+let countBox = document.getElementById('cant-cart');
 
+    countBox.addEventListener("change", sumaParcial());
 
+let addProduct = localStorage.getItem('carritoProducts');
+let arrAddProduct = JSON.parse(addProduct)
+let i = 0
+arrAddProduct.forEach(item => {
+const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item + '.json';
 
+    fetch(urlCarrito)
+    .then(response => response.json())
+    .then(data => {
+        let div = document.createElement('div');
+        div.classList.add('row');
+            div.classList.add('list-item');
+            div.setAttribute('data-index', i);
 
-
+        div.innerHTML = `
+            <img src="${data.images[0]}" class="col-md-2"> 
+            <div class="col-md-2"><p>${data.name}</p> </div>
+            <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
+            <div  class="col-md-2"> <input index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
+            <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
+            <hr class="mt-3">
+    `
+        document.getElementById('grid-cart').appendChild(div);
+        i++;
+    });
+});
