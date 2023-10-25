@@ -114,11 +114,14 @@ fetch(urlProduct)
     /* Llamado a la función para agregar al carrito */
     const cartButton = document.getElementById('cart-button');
     let carritoProducts = JSON.parse(localStorage.getItem('carritoProducts')) || [];
+    let itemID = JSON.parse(localStorage.getItem('itemID'));
             cartButton.addEventListener('click', ()=>{
-                carritoProducts.push(localStorage.getItem('itemID'));
-                localStorage.setItem('carritoProducts', JSON.stringify(carritoProducts));
                 
-            });        
+                if(carritoProducts.includes(itemID) != true){
+                    carritoProducts.push(itemID);
+                    localStorage.setItem('carritoProducts', JSON.stringify(carritoProducts));
+                   };
+        });   
 });
 
 const urlComment = 'https://japceibal.github.io/emercado-api/products_comments/' + item_localS + '.json';
