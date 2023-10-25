@@ -121,5 +121,6 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
 
         document.getElementById('grid-cart').appendChild(div);
         i++;
+        
     });
 });
