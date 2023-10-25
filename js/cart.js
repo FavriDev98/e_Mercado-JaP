@@ -109,7 +109,7 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
         const deleteProduct = div.querySelector('.fa-trash-can')
 
         deleteProduct.addEventListener('click', () => {
-            // Obtén el índice del producto que deseas eliminar
+            // Indice del producto a eliminar
             const indexToDelete = div.getAttribute('data-index');
         
             // Elimina el producto del array arrAddProduct
