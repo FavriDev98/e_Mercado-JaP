@@ -40,6 +40,7 @@ fetch(urlUserCart)
     document.getElementById('cant-cart').value = data.articles[0].count
     document.getElementById('img-cart').src = data.articles[0].image
     document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost
+    
 });
 
 function sumaParcial(){
@@ -98,8 +99,26 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
             <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
             <div  class="col-md-2"> <input index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
             <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
+            <div class="col-md-2">
+                    <i type=button style=color:red class="fa-solid fa-trash-can"></i>
+            </div>
             <hr class="mt-3">
-    `
+        `
+
+        //Eliminar producto del carrito
+        const deleteProduct = div.querySelector('.fa-trash-can')
+
+        deleteProduct.addEventListener('click', () => {
+            // Obtén el índice del producto que deseas eliminar
+            const indexToDelete = div.getAttribute('data-index');
+        
+            // Elimina el producto del array arrAddProduct
+            arrAddProduct.splice(indexToDelete, 1);
+        
+            // Elimina el elemento del carrito del DOM
+            div.remove();
+        });
+
         document.getElementById('grid-cart').appendChild(div);
         i++;
     });
