@@ -79,8 +79,7 @@ let countBox = document.getElementById('cant-cart');
 
     countBox.addEventListener("change", sumaParcial());
 
-let addProduct = localStorage.getItem('carritoProducts');
-let arrAddProduct = JSON.parse(addProduct)
+let arrAddProduct = JSON.parse(localStorage.getItem('carritoProducts'));
 let i = 0
 arrAddProduct.forEach(item => {
 const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item + '.json';
@@ -110,10 +109,11 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
 
         deleteProduct.addEventListener('click', () => {
             // Indice del producto a eliminar
-            const indexToDelete = div.getAttribute('data-index');
+            let indexToDelete = div.getAttribute('data-index');
         
             // Elimina el producto del array arrAddProduct
             arrAddProduct.splice(indexToDelete, 1);
+            localStorage.setItem('carritoProducts', JSON.stringify(arrAddProduct));
         
             // Elimina el elemento del carrito del DOM
             div.remove();
