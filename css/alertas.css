@@ -58,3 +58,9 @@
 .alert-filter {
     margin-top: 30%;
 }
+
+.is-disabled {
+    background-color: #d1d1d1; 
+    color: #d1d1d1;
+    cursor: not-allowed; 
+}
