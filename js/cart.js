@@ -117,11 +117,8 @@ let cuentaBancaria = document.getElementById("cuentaBancaria");
 
 tarjeta.addEventListener("change", function() {
     if (tarjeta.checked) {
-      transferencia.disabled = true;
       cuentaBancaria.classList.add('is-disabled');
       cuentaBancaria.readOnly = true;
-    } else {
-      transferencia.disabled = false;
     }
   });
   
@@ -134,7 +131,5 @@ tarjeta.addEventListener("change", function() {
       numeroTarjeta.readOnly = true;
       codigoSeguridad.readOnly = true;
       vencimientoTarjeta.readOnly = true;
-    } else {
-      tarjeta.disabled = false;
     }
   });
