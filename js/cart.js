@@ -124,3 +124,32 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
         
     });
 });
+
+// habilitar o deshabilitar campos de entrada
+
+let tarjeta = document.getElementById("tarjeta");
+let transferencia = document.getElementById("transferencia");
+let numeroTarjeta = document.getElementById("numeroTarjeta");
+let codigoSeguridad = document.getElementById("codigoSeguridad");
+let vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
+let cuentaBancaria = document.getElementById("cuentaBancaria");
+
+
+tarjeta.addEventListener("change", function() {
+    if (tarjeta.checked) {
+      cuentaBancaria.classList.add('is-disabled');
+      cuentaBancaria.readOnly = true;
+    }
+  });
+  
+  transferencia.addEventListener("change", function() {
+    if (transferencia.checked) {
+      tarjeta.disabled = true;
+      numeroTarjeta.classList.add('is-disabled');
+      codigoSeguridad.classList.add('is-disabled');
+      vencimientoTarjeta.classList.add('is-disabled');
+      numeroTarjeta.readOnly = true;
+      codigoSeguridad.readOnly = true;
+      vencimientoTarjeta.readOnly = true;
+    }
+  });
