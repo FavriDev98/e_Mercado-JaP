@@ -139,17 +139,24 @@ tarjeta.addEventListener("change", function() {
     if (tarjeta.checked) {
       cuentaBancaria.classList.add('is-disabled');
       cuentaBancaria.readOnly = true;
+      numeroTarjeta.classList.remove('is-disabled');
+      codigoSeguridad.classList.remove('is-disabled');
+      vencimientoTarjeta.classList.remove('is-disabled');
+      numeroTarjeta.readOnly = false;
+      codigoSeguridad.readOnly = false;
+      vencimientoTarjeta.readOnly = false;
     }
   });
   
   transferencia.addEventListener("change", function() {
     if (transferencia.checked) {
-      tarjeta.disabled = true;
       numeroTarjeta.classList.add('is-disabled');
       codigoSeguridad.classList.add('is-disabled');
       vencimientoTarjeta.classList.add('is-disabled');
       numeroTarjeta.readOnly = true;
       codigoSeguridad.readOnly = true;
       vencimientoTarjeta.readOnly = true;
+      cuentaBancaria.classList.remove('is-disabled');
+      cuentaBancaria.readOnly = false;
     }
   });
