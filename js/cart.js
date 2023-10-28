@@ -42,6 +42,12 @@ fetch(urlUserCart)
 
     currency = data.articles[0].currency;
 
+    document.getElementById('name-cart').innerText = data.articles[0].name
+    document.getElementById('cost-cart').innerText = data.articles[0].unitCost
+    document.getElementById('cant-cart').value = data.articles[0].count
+    document.getElementById('img-cart').src = data.articles[0].image
+    document.getElementById('subtotal-cart').innerText = currency + " " + data.articles[0].unitCost
+    
     document.getElementById('name-cart').innerText = data.articles[0].name;
     document.getElementById('cost-cart').innerText = data.articles[0].unitCost;
     document.getElementById('cant-cart').value = data.articles[0].count;
@@ -88,8 +94,7 @@ let countBox = document.getElementById('cant-cart');
 
     countBox.addEventListener("change", sumaParcial());
 
-let addProduct = localStorage.getItem('carritoProducts');
-let arrAddProduct = JSON.parse(addProduct)
+let arrAddProduct = JSON.parse(localStorage.getItem('carritoProducts'));
 let i = 0
 arrAddProduct.forEach(item => {
 const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item + '.json';
@@ -108,10 +113,30 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
             <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
             <div  class="col-md-2"> <input index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
             <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
+            <div class="col-md-2">
+                    <i type=button style=color:red class="fa-solid fa-trash-can"></i>
+            </div>
             <hr class="mt-3">
-    `
+        `
+
+        //Eliminar producto del carrito
+        const deleteProduct = div.querySelector('.fa-trash-can')
+
+        deleteProduct.addEventListener('click', () => {
+            // Indice del producto a eliminar
+            let indexToDelete = div.getAttribute('data-index');
+        
+            // Elimina el producto del array arrAddProduct
+            arrAddProduct.splice(indexToDelete, 1);
+            localStorage.setItem('carritoProducts', JSON.stringify(arrAddProduct));
+        
+            // Elimina el elemento del carrito del DOM
+            div.remove();
+        });
+
         document.getElementById('grid-cart').appendChild(div);
         i++;
+        
     });
 });
 
@@ -214,3 +239,39 @@ contenedorChecks.addEventListener("change", function() {
 })
 
 
+
+// habilitar o deshabilitar campos de entrada
+
+let tarjeta = document.getElementById("tarjeta");
+let transferencia = document.getElementById("transferencia");
+let numeroTarjeta = document.getElementById("numeroTarjeta");
+let codigoSeguridad = document.getElementById("codigoSeguridad");
+let vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
+let cuentaBancaria = document.getElementById("cuentaBancaria");
+
+
+tarjeta.addEventListener("change", function() {
+    if (tarjeta.checked) {
+      cuentaBancaria.classList.add('is-disabled');
+      cuentaBancaria.readOnly = true;
+      numeroTarjeta.classList.remove('is-disabled');
+      codigoSeguridad.classList.remove('is-disabled');
+      vencimientoTarjeta.classList.remove('is-disabled');
+      numeroTarjeta.readOnly = false;
+      codigoSeguridad.readOnly = false;
+      vencimientoTarjeta.readOnly = false;
+    }
+  });
+  
+  transferencia.addEventListener("change", function() {
+    if (transferencia.checked) {
+      numeroTarjeta.classList.add('is-disabled');
+      codigoSeguridad.classList.add('is-disabled');
+      vencimientoTarjeta.classList.add('is-disabled');
+      numeroTarjeta.readOnly = true;
+      codigoSeguridad.readOnly = true;
+      vencimientoTarjeta.readOnly = true;
+      cuentaBancaria.classList.remove('is-disabled');
+      cuentaBancaria.readOnly = false;
+    }
+  });
