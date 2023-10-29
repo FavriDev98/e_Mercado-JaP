@@ -297,6 +297,7 @@ function validarModal() {
 
 // Feedback negativo al submit
 btnComprar.addEventListener('click', function () {
+    console.log(validarProductos());
     if(numeroDeCasa.checkValidity() && calle.checkValidity() && esquina.checkValidity()){
         numeroDeCasa.classList.remove('is-invalid');
         calle.classList.remove('is-invalid');
