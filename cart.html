@@ -34,14 +34,19 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <div class="dropdown nav-item">
-            <div class="dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <p id="user-name"></p>
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <li><a id="btnC" class="dropdown-item" type="button" href="/cart.html">Carrito</a></li>
               <li><a id="btnP" class="dropdown-item" type="button" href="/my-profile.html">Perfil</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><div id="log-out" class="dropdown-item" type="button">Cerrar sesión</div></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <div id="log-out" class="dropdown-item" type="button">Cerrar sesión</div>
+              </li>
             </ul>
           </div>
         </ul>
@@ -60,26 +65,26 @@
       <h4 class="m-4"> Articulos a comprar </h4>
 
       <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-2"><strong> Nombre </strong></div>
-          <div class="col-md-2"><strong> Costo </strong></div>
-          <div class="col-md-2"><strong> Cantidad </strong></div>
-          <div class="col-md-2"><strong> Subtotal </strong></div>
-          <div class="col-md-2"></div>
-          <hr class="mt-2">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"><strong> Nombre </strong></div>
+        <div class="col-md-2"><strong> Costo </strong></div>
+        <div class="col-md-2"><strong> Cantidad </strong></div>
+        <div class="col-md-2"><strong> Subtotal </strong></div>
+        <div class="col-md-2"></div>
+        <hr class="mt-2">
       </div>
       <div class="row" id="autoEntrega">
-        <img id="img-cart" class="col-md-2"> 
+        <img id="img-cart" class="col-md-2">
         <div id="name-cart" class="col-md-2"> </div>
         <div id="cost-cart" class="col-md-2"> </div>
-        <div  class="col-md-2"> <input id="cant-cart" class="form-control form-control-square" type="number"></div>
+        <div class="col-md-2"> <input id="cant-cart" class="form-control form-control-square" type="number"></div>
         <div id="subtotal-cart" class="col-md-2"> </div>
         <div id="trash" class="col-md-2"> <i type=button style=color:red class="fa-solid fa-trash-can"></i></div>
         <hr class="mt-3">
       </div>
     </div>
     <!-- FORMULARIO PUNTO 2 -->
-    
+
     <div class=" container" id="check-container">
       <!-- DIRECCION  -->
       <div class=" row mt-4">
@@ -87,15 +92,18 @@
         <form class="row">
           <div class="form-group col-lg-6 mt-2">
             <label for="calle">Calle</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Calle">
+            <input type="text" class="form-control" id="calle" placeholder="Calle" required>
+            <div id="calleFeedback" class="invalid-feedback">Debes ingresar una calle</div>
           </div>
           <div class="form-group col-lg-3 mt-2">
             <label for="numero">Numero</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Numero">
+            <input type="text" class="form-control" id="numeroDeCasa" placeholder="Numero" required>
+            <div id="numeroFeedback" class="invalid-feedback"></div>
           </div>
           <div class="form-group col-lg-6 mt-2">
             <label for="esquina">Esquina</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Esquina">
+            <input type="text" class="form-control" id="esquina" placeholder="Esquina" required>
+            <div id="esquinaFeedback" class="invalid-feedback">Debes ingresar una esquina</div>
           </div>
         </form>
       </div>
@@ -122,12 +130,15 @@
         </label>
       </div>
       <!-- FIN TIPOS DE ENVIO  -->
-</div>
+    </div>
     <!-- FIN FORMULARIO -->
-
+    <!-- ALERTA -->
+    <div id="alertaCarrito" class="" role="alert">
+    </div>
+    <!-- FIN ALERTA -->
     <!-- Calculos totales de carrito -->
     <!-- Punto 1 entrega 6 -->
-    
+
     <div class="container">
       <div class=" row mt-1">
         <h3 class="title">Costos</h3>
@@ -156,59 +167,59 @@
     <div class="container mt-4">
       <div class="row">
         <h4 class="title">Forma de pago</h4>
-        <a href="" data-bs-toggle="modal" data-bs-target="#modalPago">Seleccionar</a>
+        <p id="pagoFeedback" style="color: rgb(158, 10, 10);" class=""></p>
+        <a id="SeleccionarPago" href="" data-bs-toggle="modal" data-bs-target="#modalPago">Seleccionar</a>
       </div>
     </div>
 
-<!-- Modal -->
-<div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Forma de pago</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- relleno del modal -->
-        <!-- con tarjeta -->
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="tarjeta">
-          <label class="form-check-label" for="flexRadioDefault1">Tarjeta de crédito</label>
-          <div class="mb-3 mt-3">
-            <label for="numeroTarjeta" class="form-label">Número de tarjeta</label>
-            <input type="text" class="form-control" id="numeroTarjeta">
+    <!-- Modal -->
+    <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Forma de pago</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="mb-3 mt-3">
-            <label for="codigoSeguridad" class="form-label" id="securityCode">Código de seguridad</label>
-            <input type="text" class="form-control" id="codigoSeguridad">
-          </div>
-          <div class="mb-3 mt-3">
-            <label for="vencimientoTarjeta" class="form-label">Vencimiento</label>
-            <input type="month" class="form-control" id="vencimientoTarjeta">
-          </div>
-        </div>
-        <!-- con transferencia -->
-        <div class="form-check mt-4">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="transferencia">
-          <label class="form-check-label" for="flexRadioDefault2">
-            Transferencia bancaria
-          </label>
-          <div class="mb-3 mt-3">
-            <label for="cuentaBancaria" class="form-label">Número de cuenta</label>
-            <input type="text" class="form-control" id="cuentaBancaria">
-          </div>
-        </div>
+          <div class="modal-body">
+            <!-- relleno del modal -->
+            <!-- con tarjeta -->
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="tarjeta">
+              <label class="form-check-label" for="flexRadioDefault1">Tarjeta de crédito</label>
+              <div class="mb-3 mt-3">
+                <label for="numeroTarjeta" class="form-label">Número de tarjeta</label>
+                <input type="text" class="form-control" id="numeroTarjeta" required>
+              </div>
+              <div class="mb-3 mt-3">
+                <label for="codigoSeguridad" class="form-label" id="securityCode">Código de seguridad</label>
+                <input type="text" class="form-control" id="codigoSeguridad" required>
+              </div>
+              <div class="mb-3 mt-3">
+                <label for="vencimientoTarjeta" class="form-label">Vencimiento</label>
+                <input type="month" class="form-control" id="vencimientoTarjeta" required>
+              </div>
+            </div>
+            <!-- con transferencia -->
+            <div class="form-check mt-4">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="transferencia" required>
+              <label class="form-check-label" for="flexRadioDefault2">
+                Transferencia bancaria
+              </label>
+              <div class="mb-3 mt-3">
+                <label for="cuentaBancaria" class="form-label">Número de cuenta</label>
+                <input type="text" class="form-control" id="cuentaBancaria" required>
+              </div>
+            </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Confirmar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
     <!-- Fin Modal -->
-
+    <div class="d-flex justify-content-center">
+      <div id="btnComprar" type="submit" class="btn btn-primary col-lg-3 col-md-6 col-sm-12">Comprar</div>
+    </div>
   </main>
 
   <footer class="text-muted">
@@ -216,7 +227,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
     <div id="drkBk" class="hide"></div>
     <div class="hide" id="alert">
@@ -224,7 +236,7 @@
       <p class="txt-alert">Desea cerrar sesión?</p>
       <p class="xBtn" id="x-btn">&times;</p>
       <div id="logOutConf" type="submit">
-        <p class="botonConfirmar">Confirmar</p>
+        <p id="" class="botonConfirmar">Confirmar</p>
       </div>
     </div>
   </footer>
