@@ -111,8 +111,8 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
             <img src="${data.images[0]}" class="col-md-2"> 
             <div class="col-md-2"><p>${data.name}</p> </div>
             <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
-            <div  class="col-md-2"> <input value="1" index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
-            <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
+            <div  class="col-md-2"> <input index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
+            <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency}<div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
             <div class="col-md-2">
                     <i type=button style=color:red class="fa-solid fa-trash-can"></i>
             </div>
