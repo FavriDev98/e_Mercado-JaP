@@ -112,7 +112,7 @@ arrAddProduct.forEach(item => {
             <img src="${data.images[0]}" class="col-md-2"> 
             <div class="col-md-2"><p>${data.name}</p> </div>
             <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
-            <div  class="col-md-2"> <input value="1" index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
+            <div  class="col-md-2"> <input min="1" index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
             <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
             <div class="col-md-2">
                     <i type=button style=color:red class="fa-solid fa-trash-can"></i>
@@ -216,7 +216,6 @@ divTodito.addEventListener("change", function () {
     subtotalesValores.forEach(valor => {
         sumaTotal += valor;
     });
-    console.log(sumaTotal)
     subtotal.innerText = 'USD ' + (sumaTotal);
 
     // Costo Total
@@ -224,9 +223,6 @@ divTodito.addEventListener("change", function () {
     valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g), 10) * tipoEnvio);
 
     let valorSinEnvio = parseInt(subtotal.innerText.match(/\d+/g), 10);
-
-    console.log(valorEnvio);
-    console.log(valorSinEnvio);
 
     valorTotalFinal = valorSinEnvio + valorEnvio;
 
@@ -252,28 +248,53 @@ divTodito.addEventListener("change", function () {
     }
 })
 
+let confirmacionEnvio = false;
+
 function validarEnvios() {
     const pago1 = document.getElementById('exampleRadios1');
     const pago2 = document.getElementById('exampleRadios2')
     const pago3 = document.getElementById('exampleRadios3')
 
     if (pago1.checked || pago2.checked || pago3.checked) {
-        return true;
+        confirmacionEnvio = true;
     }
 }
+
+let confirmacionProductos = false;
 
 function validarProductos() {
-    let confirmacion;
-    let arrayCountBox = document.getElementsByClassName('count-box');
+    let arrayCountBox = document.getElementsByClassName('sum-item');
     for( let i = 0; i < arrayCountBox.length; i++) {
         if (arrayCountBox[i].value > 0) {
-            confirmacion = true;
+            confirmacionProductos = true;
         }
     }
-    return confirmacion;
 }
 
-const tarjetaRadio = document.getElementById('tarjeta');
+let confirmacionModal = false;
+
+function validarModal() {
+    let tarjeta = document.getElementById('tarjeta');
+    let transferencia = document.getElementById('transferencia');
+
+    let noTarjeta = document.getElementById('numeroTarjeta');
+    let codigoSeguridad = document.getElementById('codigoSeguridad');
+    let vencimientoTarjeta = document.getElementById('vencimientoTarjeta');
+
+    let cuentaBancaria = document.getElementById('cuentaBancaria');
+
+    if ( tarjeta.checked) {
+        if (noTarjeta.checkValidity() && codigoSeguridad.checkValidity() && vencimientoTarjeta.checkValidity()) {
+            confirmacionModal= true;
+        }
+    } else if (transferencia.checked) {
+        if (cuentaBancaria.checkValidity()) {
+            confirmacionModal = true;
+        }
+    }
+}
+
+    const tarjetaRadio = document.getElementById('tarjeta');
     const numeroTarjetaInput = document.getElementById('numeroTarjeta');
     const codigoSeguridadInput = document.getElementById('codigoSeguridad');
     const vencimientoTarjetaInput = document.getElementById('vencimientoTarjeta');
@@ -289,15 +310,16 @@ const tarjetaRadio = document.getElementById('tarjeta');
     const esquinaFeedback = document.getElementById('esquinaFeedback');
     const botonConfirmar = document.getElementById('botonConfirmar');
 
-function validarModal() {   
-    if (!(tarjetaRadio.checked || transferenciaRadio.checked) && numeroTarjetaInput.checkValidity() && codigoSeguridadInput.checkValidity() && vencimientoTarjetaInput.checkValidity() && cuentaBancariaInput.checkValidity()) {
-        return false;
-    }
-}
 
 // Feedback negativo al submit
 btnComprar.addEventListener('click', function () {
-    console.log(validarProductos());
+
+    validarProductos(); //Valida si hay objetos en el carrito
+
+    validarEnvios(); //Valida los envios
+
+    validarModal(); //Valida el modal, tanto tarjeta como transferencia
+
     if(numeroDeCasa.checkValidity() && calle.checkValidity() && esquina.checkValidity()){
         numeroDeCasa.classList.remove('is-invalid');
         calle.classList.remove('is-invalid');
