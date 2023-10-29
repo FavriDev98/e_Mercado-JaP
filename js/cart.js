@@ -293,7 +293,6 @@ function validarModal() {
         }
     }
 }
-
 const tarjetaRadio = document.getElementById('tarjeta');
 const numeroTarjetaInput = document.getElementById('numeroTarjeta');
 const codigoSeguridadInput = document.getElementById('codigoSeguridad');
@@ -383,7 +382,7 @@ btnComprar.addEventListener('click', function () {
         esquina.classList.add('is-invalid');
     }
     else if (!(validarModal())) {
-        pagoFeedback.innerHTML = "Debe seleccionar un metodo de pago";
+        pagoFeedback.innerText = "Debe seleccionar un metodo de pago";
         pagoFeedback.classList.add('invalid-feedback');
         seleccionarPago.classList.add('is-invalid');
     }
