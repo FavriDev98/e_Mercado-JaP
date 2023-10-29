@@ -291,30 +291,34 @@ function validarModal() {
         if (cuentaBancaria.checkValidity()) {
             confirmacionModal = true;
         }
+    } else {
+        confirmacionModal = false;
     }
 }
-const tarjetaRadio = document.getElementById('tarjeta');
-const numeroTarjetaInput = document.getElementById('numeroTarjeta');
-const codigoSeguridadInput = document.getElementById('codigoSeguridad');
-const vencimientoTarjetaInput = document.getElementById('vencimientoTarjeta');
-const transferenciaRadio = document.getElementById('transferencia');
-const cuentaBancariaInput = document.getElementById('cuentaBancaria');
-const modalFeedback = document.getElementById('modalFeedback');
-const btnComprar = document.getElementById('btnComprar');
-const esquina = document.getElementById('esquina');
-const numeroDeCasa = document.getElementById('numeroDeCasa');
-const calle = document.getElementById('calle');
-const numeroFeedback = document.getElementById('numeroFeedback');
-const calleFeedback = document.getElementById('calleFeedback');
-const esquinaFeedback = document.getElementById('esquinaFeedback');
-const botonConfirmar = document.getElementById('botonConfirmar');
-const alertaCarrito = document.getElementById('alertaCarrito');
-const pagoFeedback = document.getElementById('pagoFeedback');
-const seleccionarPago = document.getElementById('seleccionarPago');
+let tarjetaRadio = document.getElementById('tarjeta');
+let numeroTarjetaInput = document.getElementById('numeroTarjeta');
+let codigoSeguridadInput = document.getElementById('codigoSeguridad');
+let vencimientoTarjetaInput = document.getElementById('vencimientoTarjeta');
+let transferenciaRadio = document.getElementById('transferencia');
+let cuentaBancariaInput = document.getElementById('cuentaBancaria');
+let modalFeedback = document.getElementById('modalFeedback');
+let btnComprar = document.getElementById('btnComprar');
+let esquina = document.getElementById('esquina');
+let numeroDeCasa = document.getElementById('numeroDeCasa');
+let calle = document.getElementById('calle');
+let numeroFeedback = document.getElementById('numeroFeedback');
+let calleFeedback = document.getElementById('calleFeedback');
+let esquinaFeedback = document.getElementById('esquinaFeedback');
+let botonConfirmar = document.getElementById('botonConfirmar');
+let alertaCarrito = document.getElementById('alertaCarrito');
+let pagoFeedback = document.getElementById('pagoFeedback');
 
 
 // Feedback negativo al submit
 btnComprar.addEventListener('click', function () {
+
+    let cagada = 0;
+
     validarProductos(); //Valida si hay objetos en el carrito
 
     validarEnvios(); //Valida los envios
@@ -337,8 +341,10 @@ btnComprar.addEventListener('click', function () {
         esquinaFeedback.innerHTML = "";
         calleFeedback.innerHTML = "";
         numeroFeedback.innerHTML = "";
+    } else {
+        cagada = 1;
     }
-    else if (!(numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && !(esquina.checkValidity())) {
+    if (!(numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && !(esquina.checkValidity())) {
         numeroFeedback.innerHTML = "Debe ingresar un numero de casa";
         numeroFeedback.classList.add('invalid-feedback');
         numeroDeCasa.classList.add('is-invalid');
@@ -348,8 +354,9 @@ btnComprar.addEventListener('click', function () {
         esquinaFeedback.innerHTML = "Debe ingresar una esquina";
         esquinaFeedback.classList.add('invalid-feedback');
         esquina.classList.add('is-invalid');
+        cagada = 2;
     }
-    else if (!(numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && (esquina.checkValidity())) {
+    if (!(numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && (esquina.checkValidity())) {
         numeroFeedback.innerHTML = "Debe ingresar un numero de casa";
         numeroFeedback.classList.add('invalid-feedback');
         numeroDeCasa.classList.add('is-invalid');
@@ -357,39 +364,46 @@ btnComprar.addEventListener('click', function () {
         calleFeedback.classList.add('invalid-feedback');
         calle.classList.add('is-invalid');
     }
-    else if (!(numeroDeCasa.checkValidity()) && (calle.checkValidity()) && (esquina.checkValidity())) {
+    if (!(numeroDeCasa.checkValidity()) && (calle.checkValidity()) && (esquina.checkValidity())) {
         numeroFeedback.innerHTML = "Debe ingresar un numero de casa";
         numeroFeedback.classList.add('invalid-feedback');
         numeroDeCasa.classList.add('is-invalid');
-    }
-    else if ((numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && !(esquina.checkValidity())) {
+        
+        cagada = 3;
+    } 
+    if ((numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && !(esquina.checkValidity())) {
         calleFeedback.innerHTML = "Debe ingresar una calle";
         calleFeedback.classList.add('invalid-feedback');
         calle.classList.add('is-invalid');
         esquinaFeedback.innerHTML = "Debe ingresar una esquina";
         esquinaFeedback.classList.add('invalid-feedback');
         esquina.classList.add('is-invalid');
-
-    }
-    else if ((numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && (esquina.checkValidity())) {
+        
+        cagada = 4;
+    } 
+    if ((numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && (esquina.checkValidity())) {
         calleFeedback.innerHTML = "Debe ingresar una calle";
         calleFeedback.classList.add('invalid-feedback');
         calle.classList.add('is-invalid');
+        
+        cagada = 5;
     }
-    else if ((numeroDeCasa.checkValidity()) && (calle.checkValidity()) && !(esquina.checkValidity())) {
+    if ((numeroDeCasa.checkValidity()) && (calle.checkValidity()) && !(esquina.checkValidity())) {
         esquinaFeedback.innerHTML = "Debe ingresar una esquina";
         esquinaFeedback.classList.add('invalid-feedback');
         esquina.classList.add('is-invalid');
+        cagada = 6;
     }
-    else if (!(validarModal())) {
+    if (!confirmacionModal) {
         pagoFeedback.innerText = "Debe seleccionar un metodo de pago";
-        pagoFeedback.classList.add('invalid-feedback');
-        seleccionarPago.classList.add('is-invalid');
+        cagada = 7;
+    } else {
+        console.log(confirmacionModal);
     }
-    else {
-
+    console.log(cagada);
+    if (cagada == 0) {
         alertaCarrito.classList.add('alert-success', 'alert');
-        alertaCarrito.innerHTML = "  ¡Has comprado con exito!";
-
+        alertaCarrito.innerText = "  ¡Has comprado con exito!";
+        pagoFeedback.innerText = " ";
     }
 });
