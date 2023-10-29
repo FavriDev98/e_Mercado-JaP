@@ -118,7 +118,7 @@ arrAddProduct.forEach(item => {
                     <i type=button style=color:red class="fa-solid fa-trash-can"></i>
             </div>
             <hr class="mt-3">
-        `
+            `
 
             //Eliminar producto del carrito
             const deleteProduct = div.querySelector('.fa-trash-can')
