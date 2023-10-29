@@ -214,9 +214,9 @@ divProductos.addEventListener("change", function() {
 
 // Costo del envio
 
-let contenedorChecks = document.getElementById('check-container');
+  let contenedorChecks = document.getElementById('check-container');
 
-contenedorChecks.addEventListener("change", function() {
+ contenedorChecks.addEventListener("change", function() {
 
     let opcionCinco = document.getElementById('exampleRadios3');
     let opcionSiete = document.getElementById('exampleRadios2');
