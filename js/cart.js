@@ -263,13 +263,16 @@ function validarEnvios() {
 }
 
 function validarProductos() {
-    arrayCountBox.forEach(element => {
-        if (element.value > 0) {
-            return true;
+    let confirmacion;
+    let arrayCountBox = document.getElementsByClassName('count-box');
+    for( let i = 0; i < arrayCountBox.length; i++) {
+        if (arrayCountBox[i].value > 0) {
+            confirmacion = true;
         }
     }
-    )
+    return confirmacion;
 }
+
 const tarjetaRadio = document.getElementById('tarjeta');
     const numeroTarjetaInput = document.getElementById('numeroTarjeta');
     const codigoSeguridadInput = document.getElementById('codigoSeguridad');
