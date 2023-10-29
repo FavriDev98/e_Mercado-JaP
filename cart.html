@@ -87,15 +87,18 @@
         <form class="row">
           <div class="form-group col-lg-6 mt-2">
             <label for="calle">Calle</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Calle">
+            <input type="text" class="form-control" id="calle" placeholder="Calle" required>
+            <div id="calleFeedback" class="invalid-feedback">Debes ingresar una calle</div>
           </div>
           <div class="form-group col-lg-3 mt-2">
             <label for="numero">Numero</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Numero">
+            <input type="text" class="form-control" id="numeroDeCasa" placeholder="Numero" required>
+            <div id="numeroFeedback" class="invalid-feedback"></div>
           </div>
           <div class="form-group col-lg-6 mt-2">
             <label for="esquina">Esquina</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Esquina">
+            <input type="text" class="form-control" id="esquina" placeholder="Esquina" required>
+            <div id="esquinaFeedback" class="invalid-feedback">Debes ingresar una esquina</div>
           </div>
         </form>
       </div>
@@ -157,6 +160,7 @@
       <div class="row">
         <h4 class="title">Forma de pago</h4>
         <a href="" data-bs-toggle="modal" data-bs-target="#modalPago">Seleccionar</a>
+      <div id="modalFeedback" class="valid-feedback">Debe Seleccionar una forma de pago</div>
       </div>
     </div>
 
@@ -207,6 +211,7 @@
     </div>
   </div>
 </div>
+<div id="btnComprar" type="submit" class="btn btn-primary">Comprar</div>
     <!-- Fin Modal -->
 
   </main>
@@ -224,7 +229,7 @@
       <p class="txt-alert">Desea cerrar sesión?</p>
       <p class="xBtn" id="x-btn">&times;</p>
       <div id="logOutConf" type="submit">
-        <p class="botonConfirmar">Confirmar</p>
+        <p id="botonConfirmar" class="botonConfirmar">Confirmar</p>
       </div>
     </div>
   </footer>
