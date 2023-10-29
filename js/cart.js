@@ -111,7 +111,7 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
             <img src="${data.images[0]}" class="col-md-2"> 
             <div class="col-md-2"><p>${data.name}</p> </div>
             <div class="col-md-2 data-cost" indexCost='${i}'><p>${data.cost}</p> </div>
-            <div  class="col-md-2"> <input index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
+            <div  class="col-md-2"> <input value="1" index='${i}' onchange="sumaParcial()" class="form-control form-control-square sum-item" type="number"></div>
             <div class="col-md-2 count-box" style="display: flex;" indexSuma='${i}'>${data.currency} <div class="pingo" style="padding-left: 0.4rem;"> </div> </div>
             <div class="col-md-2">
                     <i type=button style=color:red class="fa-solid fa-trash-can"></i>
@@ -140,15 +140,55 @@ const urlCarrito = 'https://japceibal.github.io/emercado-api/products/' + item +
     });
 });
 
-// Funciones para calcular el valor total
+
+// habilitar o deshabilitar campos de entrada
+
+let tarjeta = document.getElementById("tarjeta");
+let transferencia = document.getElementById("transferencia");
+let numeroTarjeta = document.getElementById("numeroTarjeta");
+let codigoSeguridad = document.getElementById("codigoSeguridad");
+let vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
+let cuentaBancaria = document.getElementById("cuentaBancaria");
+
+
+tarjeta.addEventListener("change", function() {
+    if (tarjeta.checked) {
+      cuentaBancaria.classList.add('is-disabled');
+      cuentaBancaria.readOnly = true;
+      numeroTarjeta.classList.remove('is-disabled');
+      codigoSeguridad.classList.remove('is-disabled');
+      vencimientoTarjeta.classList.remove('is-disabled');
+      numeroTarjeta.readOnly = false;
+      codigoSeguridad.readOnly = false;
+      vencimientoTarjeta.readOnly = false;
+    }
+  });
+  
+  transferencia.addEventListener("change", function() {
+    if (transferencia.checked) {
+      numeroTarjeta.classList.add('is-disabled');
+      codigoSeguridad.classList.add('is-disabled');
+      vencimientoTarjeta.classList.add('is-disabled');
+      numeroTarjeta.readOnly = true;
+      codigoSeguridad.readOnly = true;
+      vencimientoTarjeta.readOnly = true;
+      cuentaBancaria.classList.remove('is-disabled');
+      cuentaBancaria.readOnly = false;
+    }
+  });
+
+  // Funciones para calcular el valor total
 
 
 let valorTotalFinal = 0;
-let divProductos = document.getElementById('grid-cart');
+let divTodito = document.getElementById('todito');
 
 //Valor Subtotal en dolares
 
-divProductos.addEventListener("change", function() {
+divTodito.addEventListener("change", function() {
+
+
+//Valor Subtotal en dolares
 
     sumaTotal = 0;
     let subtotalesCrudos = document.getElementsByClassName('count-box');
@@ -209,69 +249,4 @@ divProductos.addEventListener("change", function() {
         valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
         costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
     }
-
 })
-
-// Costo del envio
-
-  let contenedorChecks = document.getElementById('check-container');
-
- contenedorChecks.addEventListener("change", function() {
-
-    let opcionCinco = document.getElementById('exampleRadios3');
-    let opcionSiete = document.getElementById('exampleRadios2');
-    let opcionQuince = document.getElementById('exampleRadios1');
-
-    
-    if (opcionQuince.checked) {
-        tipoEnvio = 0.15;
-        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
-        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
-    } else if (opcionSiete.checked) {
-        tipoEnvio = 0.07;
-        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
-        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
-    } else if (opcionCinco.checked) {
-        tipoEnvio = 0.05;
-        valorEnvio = Math.round(parseInt(subtotal.innerText.match(/\d+/g),10) * tipoEnvio);
-        costoDeEnvio.innerHTML = 'USD ' + valorEnvio;
-    }
-})
-
-
-
-// habilitar o deshabilitar campos de entrada
-
-let tarjeta = document.getElementById("tarjeta");
-let transferencia = document.getElementById("transferencia");
-let numeroTarjeta = document.getElementById("numeroTarjeta");
-let codigoSeguridad = document.getElementById("codigoSeguridad");
-let vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
-let cuentaBancaria = document.getElementById("cuentaBancaria");
-
-
-tarjeta.addEventListener("change", function() {
-    if (tarjeta.checked) {
-      cuentaBancaria.classList.add('is-disabled');
-      cuentaBancaria.readOnly = true;
-      numeroTarjeta.classList.remove('is-disabled');
-      codigoSeguridad.classList.remove('is-disabled');
-      vencimientoTarjeta.classList.remove('is-disabled');
-      numeroTarjeta.readOnly = false;
-      codigoSeguridad.readOnly = false;
-      vencimientoTarjeta.readOnly = false;
-    }
-  });
-  
-  transferencia.addEventListener("change", function() {
-    if (transferencia.checked) {
-      numeroTarjeta.classList.add('is-disabled');
-      codigoSeguridad.classList.add('is-disabled');
-      vencimientoTarjeta.classList.add('is-disabled');
-      numeroTarjeta.readOnly = true;
-      codigoSeguridad.readOnly = true;
-      vencimientoTarjeta.readOnly = true;
-      cuentaBancaria.classList.remove('is-disabled');
-      cuentaBancaria.readOnly = false;
-    }
-  });
