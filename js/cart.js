@@ -264,7 +264,7 @@ let confirmacionProductos = false;
 
 function validarProductos() {
     let arrayCountBox = document.getElementsByClassName('sum-item');
-    for( let i = 0; i < arrayCountBox.length; i++) {
+    for (let i = 0; i < arrayCountBox.length; i++) {
         if (arrayCountBox[i].value > 0) {
             confirmacionProductos = true;
         }
@@ -283,9 +283,9 @@ function validarModal() {
 
     let cuentaBancaria = document.getElementById('cuentaBancaria');
 
-    if ( tarjeta.checked) {
+    if (tarjeta.checked) {
         if (noTarjeta.checkValidity() && codigoSeguridad.checkValidity() && vencimientoTarjeta.checkValidity()) {
-            confirmacionModal= true;
+            confirmacionModal = true;
         }
     } else if (transferencia.checked) {
         if (cuentaBancaria.checkValidity()) {
@@ -294,33 +294,35 @@ function validarModal() {
     }
 }
 
-    const tarjetaRadio = document.getElementById('tarjeta');
-    const numeroTarjetaInput = document.getElementById('numeroTarjeta');
-    const codigoSeguridadInput = document.getElementById('codigoSeguridad');
-    const vencimientoTarjetaInput = document.getElementById('vencimientoTarjeta');
-    const transferenciaRadio = document.getElementById('transferencia');
-    const cuentaBancariaInput = document.getElementById('cuentaBancaria');
-    const modalFeedback = document.getElementById('modalFeedback');
-    const btnComprar = document.getElementById('btnComprar');
-    const esquina = document.getElementById('esquina');
-    const numeroDeCasa = document.getElementById('numeroDeCasa');
-    const calle = document.getElementById('calle');
-    const numeroFeedback = document.getElementById('numeroFeedback');
-    const calleFeedback = document.getElementById('calleFeedback');
-    const esquinaFeedback = document.getElementById('esquinaFeedback');
-    const botonConfirmar = document.getElementById('botonConfirmar');
+const tarjetaRadio = document.getElementById('tarjeta');
+const numeroTarjetaInput = document.getElementById('numeroTarjeta');
+const codigoSeguridadInput = document.getElementById('codigoSeguridad');
+const vencimientoTarjetaInput = document.getElementById('vencimientoTarjeta');
+const transferenciaRadio = document.getElementById('transferencia');
+const cuentaBancariaInput = document.getElementById('cuentaBancaria');
+const modalFeedback = document.getElementById('modalFeedback');
+const btnComprar = document.getElementById('btnComprar');
+const esquina = document.getElementById('esquina');
+const numeroDeCasa = document.getElementById('numeroDeCasa');
+const calle = document.getElementById('calle');
+const numeroFeedback = document.getElementById('numeroFeedback');
+const calleFeedback = document.getElementById('calleFeedback');
+const esquinaFeedback = document.getElementById('esquinaFeedback');
+const botonConfirmar = document.getElementById('botonConfirmar');
+const alertaCarrito = document.getElementById('alertaCarrito');
+const pagoFeedback = document.getElementById('pagoFeedback');
+const seleccionarPago = document.getElementById('seleccionarPago');
 
 
 // Feedback negativo al submit
 btnComprar.addEventListener('click', function () {
-
     validarProductos(); //Valida si hay objetos en el carrito
 
     validarEnvios(); //Valida los envios
 
     validarModal(); //Valida el modal, tanto tarjeta como transferencia
 
-    if(numeroDeCasa.checkValidity() && calle.checkValidity() && esquina.checkValidity()){
+    if (numeroDeCasa.checkValidity() && calle.checkValidity() && esquina.checkValidity()) {
         numeroDeCasa.classList.remove('is-invalid');
         calle.classList.remove('is-invalid');
         esquina.classList.remove('is-invalid');
@@ -336,7 +338,7 @@ btnComprar.addEventListener('click', function () {
         esquinaFeedback.innerHTML = "";
         calleFeedback.innerHTML = "";
         numeroFeedback.innerHTML = "";
-    }       
+    }
     else if (!(numeroDeCasa.checkValidity()) && !(calle.checkValidity()) && !(esquina.checkValidity())) {
         numeroFeedback.innerHTML = "Debe ingresar un numero de casa";
         numeroFeedback.classList.add('invalid-feedback');
@@ -379,5 +381,16 @@ btnComprar.addEventListener('click', function () {
         esquinaFeedback.innerHTML = "Debe ingresar una esquina";
         esquinaFeedback.classList.add('invalid-feedback');
         esquina.classList.add('is-invalid');
+    }
+    else if (!(validarModal())) {
+        pagoFeedback.innerHTML = "Debe seleccionar un metodo de pago";
+        pagoFeedback.classList.add('invalid-feedback');
+        seleccionarPago.classList.add('is-invalid');
+    }
+    else {
+
+        alertaCarrito.classList.add('alert-success', 'alert');
+        alertaCarrito.innerHTML = "  ¡Has comprado con exito!";
+
     }
 });
