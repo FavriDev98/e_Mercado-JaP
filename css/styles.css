@@ -1,6 +1,18 @@
 #container-info-products {
   margin-top: 60px;
 }
+
+
+.topFile {
+  height: 80%;
+  margin-top: 10px;
+  text-align: right;
+}
+
+#profilePicture {
+  width: 10%; 
+}
+
 .site-header {
   font-family: 'Verdana', serif !important;
 }

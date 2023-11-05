@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
     window.location.href = './login.html';
-})
+});
 
 document.addEventListener("DOMContentLoaded", function(){
     let userShow = document.getElementById('user-name');
@@ -21,4 +21,19 @@ document.addEventListener("DOMContentLoaded", function(){
             <p>${userSession}<p>
     `    
     }
-})
+});
+
+let profilePicture = document.getElementById('profilePicture');
+let fileUpload = document.getElementById('fileUpload');
+  
+fileUpload.addEventListener("change", handleFiles, false);
+  
+function handleFiles() {
+    for (let i = 0; i < this.files.length; i++) {
+        profilePicture.src = URL.createObjectURL(this.files[i]);
+        profilePicture.width = 60;
+        profilePicture.onload = () => {
+            URL.revokeObjectURL(profilePicture.src);
+        };
+    };
+};
