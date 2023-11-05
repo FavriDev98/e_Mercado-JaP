@@ -37,3 +37,12 @@ function handleFiles() {
         };
     };
 };
+
+
+let inputName = document.getElementById('inputName');
+let secondName = document.getElementById('inputSecondName');
+let inputFirst = document.getElementById('inputFirst');
+let inputSecond = document.getElementById('inputSecond');
+let inputMail = document.getElementById('inputMail');
+let inputNumber = document.getElementById('inputNumber');
+
