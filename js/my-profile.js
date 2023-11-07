@@ -60,7 +60,7 @@ function handleFiles() {
     }
 }
 
-// Validacion de Formulario
+/// Validacion de Formulario
 
 const inputs = document.getElementsByClassName('form-camp');
 const name = document.getElementById('inputName');
@@ -80,14 +80,6 @@ function validarInputs() {
         return false;
     } else {
         return true;
-    }
-}function loadProfilePicture() {
-    // Obtener la URL de la imagen almacenada localmente
-    let profilePicStr = localStorage.getItem('profilePic');
-
-    // Si hay una imagen almacenada localmente, cargarla en el elemento img
-    if (profilePicStr != null && profilePicStr != undefined) {
-        profilePicture.src = profilePicStr;
     }
 }
 
