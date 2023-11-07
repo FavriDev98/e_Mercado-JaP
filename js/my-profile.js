@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = './login.html';
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-
-
 document.addEventListener("DOMContentLoaded", function(){
     let userShow = document.getElementById('user-name');
     let userData = localStorage.getItem('usuario');
@@ -60,6 +57,16 @@ function handleFiles() {
     }
 }
 
+function loadProfilePicture() {
+    // Obtener la URL de la imagen almacenada localmente
+    let profilePicStr = localStorage.getItem('profilePic');
+
+    // Si hay una imagen almacenada localmente, cargarla en el elemento img
+    if (profilePicStr != null && profilePicStr != undefined) {
+        profilePicture.src = profilePicStr;
+    }
+}
+
 /// Validacion de Formulario
 
 const inputs = document.getElementsByClassName('form-camp');
@@ -75,19 +82,13 @@ const alert = document.getElementById('alert-warning');
 
 //validacion de inputs
 
+document.addEventListener("DOMContentLoaded", function () {
+
 function validarInputs() {
     if (!(name.checkValidity()) || !(secondName.checkValidity()) || !(surname.checkValidity()) || !(secondSurname.checkValidity()) || !(email.checkValidity()) || !(number.checkValidity())) {
         return false;
     } else {
         return true;
-    }
-}function loadProfilePicture() {
-    // Obtener la URL de la imagen almacenada localmente
-    let profilePicStr = localStorage.getItem('profilePic');
-
-    // Si hay una imagen almacenada localmente, cargarla en el elemento img
-    if (profilePicStr != null && profilePicStr != undefined) {
-        profilePicture.src = profilePicStr;
     }
 }
 
