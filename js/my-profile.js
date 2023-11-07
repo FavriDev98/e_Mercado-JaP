@@ -60,7 +60,7 @@ function handleFiles() {
     }
 }
 
-// Validacion de Formulario
+/// Validacion de Formulario
 
 const inputs = document.getElementsByClassName('form-camp');
 const name = document.getElementById('inputName');
@@ -81,9 +81,7 @@ function validarInputs() {
     } else {
         return true;
     }
-};
-
-function loadProfilePicture() {
+}function loadProfilePicture() {
     // Obtener la URL de la imagen almacenada localmente
     let profilePicStr = localStorage.getItem('profilePic');
 
@@ -91,7 +89,7 @@ function loadProfilePicture() {
     if (profilePicStr != null && profilePicStr != undefined) {
         profilePicture.src = profilePicStr;
     }
-};
+}
 
 // Validacion de formulario y envio
 
