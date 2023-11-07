@@ -24,11 +24,13 @@ document.addEventListener("DOMContentLoaded", function(){
     `    
     }
 
-    if(profilePicStr != null){
-        profilePicture.onload = ()=>{
-            URL.revokeObjectURL(profilePicStr.src);
+    try {
+        profilePicture.onload = () => {
+            URL.canParse(profilePicStr.src);
         }
-    }
+    } catch (error) {
+        console.error(error);
+    };
 });
 
 let profilePicStr = localStorage.getItem('profilePic');
