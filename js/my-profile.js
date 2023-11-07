@@ -10,9 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+document.addEventListener("DOMContentLoaded", function(){
     let userShow = document.getElementById('user-name');
     let userData = localStorage.getItem('usuario');
     let userSession = sessionStorage.getItem('usuario');
+    inputMail.value = localStorage.getItem('usuario') || sessionStorage.getItem('usuario');
+
     if (userData != null) {
         userShow.innerHTML = `
             <p>${userData}<p>
@@ -22,24 +27,38 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>${userSession}<p>
     `
     }
+
 });
 
 let profilePicture = document.getElementById('profilePicture');
 let fileUpload = document.getElementById('fileUpload');
 
+// Cargar la imagen almacenada localmente al cargar la página
+window.addEventListener('load', () => {
+    loadProfilePicture();
+});
+
 fileUpload.addEventListener("change", handleFiles, false);
 
 function handleFiles() {
     for (let i = 0; i < this.files.length; i++) {
-        profilePicture.src = URL.createObjectURL(this.files[i]);
-        profilePicture.width = 60;
-        profilePicture.onload = () => {
-            URL.revokeObjectURL(profilePicture.src);
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            // Establecer la imagen en el elemento img
+            profilePicture.src = event.target.result;
+
+            // Guardar los datos de la imagen en el localStorage
+            localStorage.setItem('profilePic', event.target.result);
+
+            // Configurar otras propiedades si es necesario (por ejemplo, width)
+            profilePicture.width = 60;
         };
-    };
-};
 
-
+        // Leer el contenido del archivo como una URL de datos
+        reader.readAsDataURL(this.files[i]);
+    }
+}
 
 // Validacion de Formulario
 
@@ -61,6 +80,14 @@ function validarInputs() {
         return false;
     } else {
         return true;
+    }
+}function loadProfilePicture() {
+    // Obtener la URL de la imagen almacenada localmente
+    let profilePicStr = localStorage.getItem('profilePic');
+
+    // Si hay una imagen almacenada localmente, cargarla en el elemento img
+    if (profilePicStr != null && profilePicStr != undefined) {
+        profilePicture.src = profilePicStr;
     }
 }
 
@@ -98,5 +125,4 @@ btn.addEventListener('click', function (e) {
             , 2000);
         console.log('Formulario Invalido');
     }
-});
-
+});});
