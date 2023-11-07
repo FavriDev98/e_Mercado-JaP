@@ -81,7 +81,9 @@ function validarInputs() {
     } else {
         return true;
     }
-}function loadProfilePicture() {
+};
+
+function loadProfilePicture() {
     // Obtener la URL de la imagen almacenada localmente
     let profilePicStr = localStorage.getItem('profilePic');
 
@@ -89,7 +91,7 @@ function validarInputs() {
     if (profilePicStr != null && profilePicStr != undefined) {
         profilePicture.src = profilePicStr;
     }
-}
+};
 
 // Validacion de formulario y envio
 
