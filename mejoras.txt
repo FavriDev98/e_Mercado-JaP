@@ -1,0 +1,10 @@
+1-Actualización de foto de perfil: Corregir el problema donde la foto de perfil anterior permanece visible al cerrar sesión y entrar con otra cuenta. Implementar un mecanismo para garantizar que la imagen de perfil se actualice al iniciar sesión con una nueva cuenta.
+
+2-Validación de correo electrónico: Añadir validación para asegurarse de que la dirección de correo electrónico proporcionada durante el inicio de sesión cumpla con el formato estándar, evitando errores y garantizando el uso de direcciones válidas.
+
+3-Limpieza de datos al cerrar sesión: Importante borrar todos los datos de la sesión anterior, como caché, cookies y tokens de autenticación, al cerrar sesión para preservar la seguridad y privacidad del usuario al iniciar sesión con otra cuenta.
+
+
+
+
+
