@@ -127,3 +127,17 @@ btn.addEventListener('click', function (e) {
         console.log('Formulario Invalido');
     }
 });});
+
+// Guardar los datos del usuario al recargar página
+const userData = localStorage.getItem('userData');
+
+document.addEventListener('DOMContentLoaded', function(){
+    if (userData !== ""){
+        let storedData = JSON.parse(userData);
+        name.value = storedData.name;
+        secondName.value = storedData.secondName
+        surname.value = storedData.surname;
+        secondSurname.value = storedData.secondSurname;
+        number.value = storedData.number
+    }
+})
