@@ -4,7 +4,6 @@ logOut.addEventListener("click", function() {
 
     document.getElementById('alert').classList.remove('hide');
     document.getElementById('drkBk').classList.remove('hide');
-
 });
 
 /* boton "x" para cerrar alerta */
@@ -23,10 +22,8 @@ let confirmBtn = document.getElementById('logOutConf');
 
 confirmBtn.addEventListener("click", function() {
 
-    localStorage.removeItem('usuario');
-    localStorage.removeItem('password');
-    sessionStorage.removeItem('usuario');
-    sessionStorage.removeItem('password');
+    localStorage.clear();
+    sessionStorage.clear();
     window.location.href = './login.html';
 
 });
