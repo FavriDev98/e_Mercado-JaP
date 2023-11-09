@@ -3,6 +3,12 @@
 localStorage.removeItem('usuario');
 localStorage.removeItem('password');
 
+function validarEmail(user) {
+   
+    var regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    return regex.test(user);
+  }
+
 document.addEventListener('DOMContentLoaded', function() {
     let boton = document.getElementById('lginbttn');
 
@@ -11,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let user = document.getElementById('usuario').value;
         let password = document.getElementById('password').value;
 
-        if (user.length < 5 || password.length < 5) {
+        if (!validarEmail(user) || (user.length < 5 || password.length < 5)) {
             document.getElementById('alert').classList.remove('hide');
             document.getElementById('drkBk').classList.remove('hide');
         } else {
@@ -37,3 +43,8 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 })
 
+function validarEmail(user) {
+   
+    var regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    return regex.test(user);
+  }
