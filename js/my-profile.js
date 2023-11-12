@@ -85,7 +85,7 @@ const alert = document.getElementById('alert-warning');
 document.addEventListener("DOMContentLoaded", function () {
 
 function validarInputs() {
-    if (!(name.checkValidity()) || !(secondName.checkValidity()) || !(surname.checkValidity()) || !(secondSurname.checkValidity()) || !(email.checkValidity()) || !(number.checkValidity())) {
+    if (!(name.checkValidity()) || !(surname.checkValidity()) || !(number.checkValidity())) {
         return false;
     } else {
         return true;
@@ -113,7 +113,7 @@ btn.addEventListener('click', function (e) {
             email: email.value,
             number: number.value
         };
-        localStorage.setItem('userData', JSON.stringify(userData)); //Datos al localStorage    console.log(userData);
+        localStorage.setItem('userData', JSON.stringify(userData)); //Datos al localStorage   
     }
     else { //Formulario invalido
         alert.classList.add('show');
