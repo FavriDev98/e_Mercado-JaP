@@ -1,4 +1,4 @@
-async function obtenerCarrito() {
+function getCarrito() {
   try {
     // Leer el archivo de carrito
     const cartPath = path.resolve(__dirname, 'C:/Users/Epsil/OneDrive/Escritorio/Proyecto final JaP/API/user_cart/25801.json');
@@ -15,5 +15,5 @@ async function obtenerCarrito() {
 
 
   module.exports = {
-    obtenerCarrito,
+    getCarrito,
   };
