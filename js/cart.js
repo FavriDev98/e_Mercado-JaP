@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-const urlUserCart = 'https://japceibal.github.io/emercado-api/user_cart/25801.json';
+const urlUserCart = 'http://localhost:3000/cart';
 
 let currency;
 let valorAutoDado;
