@@ -37,7 +37,12 @@ let tipoEnvio = 0.15;
 let valorEnvio;
 let costoDeEnvio = document.getElementById('costo-de-envio');
 
-fetch(urlUserCart)
+fetch(urlUserCart, {
+    headers: {
+      'Content-Type': 'application/json',
+      'access-token': localStorage.getItem('token')
+    },
+  })
     .then(response => response.json())
     .then(data => {
 

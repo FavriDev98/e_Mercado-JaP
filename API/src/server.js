@@ -3,16 +3,38 @@ const mariadb = require('mariadb');
 const nodemon = require('nodemon');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = "la ki";
+var regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
 const app = express();
 const port = 3000;
 
+app.use(cors());
 app.use(express.json());
+
+app.use("/cart", (req, res, next) => {
+  try {
+    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+    console.log(decoded);
+    next();
+  } catch (err) {
+    res.status(401).json({ message: "Usuario no autorizado" });
+  }
+});
+
+function validarEmail(user) {
+   
+  var regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  return regex.test(user);
+}
+
 
 app.get('/cart', (req, res) => {
     try {
       // Leer el archivo de carrito
-      const cartPath = path.resolve(__dirname, 'C:/Users/Epsil/OneDrive/Escritorio/Proyecto final JaP/API/user_cart/25801.json');
+      const cartPath = path.join(__dirname, '../user_cart', '25801.json');
       const cartData = fs.readFileSync(cartPath, 'utf8');
       const cart = JSON.parse(cartData);
   
@@ -24,36 +46,17 @@ app.get('/cart', (req, res) => {
     }
   });
 
-app.get('/data2', (req, res) => {
-  // Lógica para servir el segundo archivo JSON
-  res.json({ data: 'contenido del archivo 2' });
-});
-
 // Endpoint /login
-app.post('/login', (req, res) => {
-  // Lógica para autenticar al usuario y generar el token con jsonwebtoken
-  // ...
-
-  // Enviar el token como respuesta al frontend
-  res.json({ token: 'tu_token_aqui' });
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  if (validarEmail(username) && (username.length > 5 && password.length > 5)) {
+    const token = jwt.sign({ username }, SECRET_KEY);
+    res.status(200).json({ token });
+  } else {
+    res.status(401).json({ message: "Usuario y/o contraseña incorrecto" });
+  }
 });
 
-// Middleware de autorización para /cart
-const authorizeMiddleware = (req, res, next) => {
-  // Lógica para verificar y validar el token
-  // ...
-
-  // Si el token es válido, permitir acceso
-  // Si no es válido, enviar una respuesta de error
-};
-
-// Ruta protegida con el middleware de autorización
-app.get('/cadwart', authorizeMiddleware, (req, res) => {
-  // Lógica para la ruta /cart
-  res.json({ message: 'Contenido del carrito' });
-});
-
-// Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });

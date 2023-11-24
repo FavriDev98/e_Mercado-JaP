@@ -28,7 +28,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 sessionStorage.setItem('usuario', user);
                 sessionStorage.setItem('password', password);
             }
-            window.location.href = './index.html';
+            let data = {
+                username: user,
+                password: password,
+              };
+              fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  // Agrega cualquier otra cabecera necesaria aquí
+                },
+                body: JSON.stringify(data),
+              })
+                .then(response => response.json())
+                .then(data => {
+                  localStorage.setItem('token', data.token);
+                  window.location.href = './index.html';
+                })
+                .catch(error => {
+                  console.error('Error en la solicitud:', error);
+                });
         }
     });
 });
