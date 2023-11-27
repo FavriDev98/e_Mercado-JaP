@@ -1,6 +1,6 @@
 const express = require('express');
-const mariadb = require('mariadb');
-const nodemon = require('nodemon');
+const sqlite3 = require('sqlite3').verbose();
+const { open } = require('sqlite');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
@@ -13,6 +13,27 @@ const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+const dbPath = path.join(__dirname, 'carrito.db');
+
+let db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the in-memory SQlite database.');
+});
+
+
+db.run(`INSERT INTO carritoItem(ID, name, count, unitCost, currency, image) VALUES(?, ?, ?, ?, ?, ?)`,
+[req.],
+  function(err) {
+  if (err) {
+    return console.log(err.message);
+  }
+  // get the last insert id
+  console.log(`A row has been inserted with rowid ${this.lastID}`);
+});
+
 
 app.use("/cart", (req, res, next) => {
   try {
