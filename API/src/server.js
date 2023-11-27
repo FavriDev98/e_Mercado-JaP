@@ -25,7 +25,7 @@ let db = new sqlite3.Database(dbPath, (err) => {
 
 
 db.run(`INSERT INTO carritoItem(ID, name, count, unitCost, currency, image) VALUES(?, ?, ?, ?, ?, ?)`,
-[req.],
+[req.body.ID, req.body.name, req.body.count, req.body.unitCost, req.body.currency, req.body.image],
   function(err) {
   if (err) {
     return console.log(err.message);
